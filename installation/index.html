@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Sascha Vowe">
-    
+    <link rel="canonical" href="https://sascha.vowe.eu/talises-doc/installation/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     
@@ -81,7 +81,34 @@
                         
                             
 <li >
-    <a href="../user-guide/Generating_a_wave-function/">Generating a wave-function</a>
+    <a href="../user-guide/generating_a_wave-function/">Generating a wave-function</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../user-guide/handling_binary_data/">Handling binary data</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../user-guide/the_xml_file/">The XML file</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../about/license/">License</a>
 </li>
 
                         
@@ -103,12 +130,12 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="../user-guide/Generating_a_wave-function/">
+                        <a rel="next" href="../user-guide/generating_a_wave-function/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/savowe/talises/edit/master/docs/installation.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/savowe/talises-doc/blob/master/docs/installation.md"><i class="fab fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -120,18 +147,18 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#installing_talises">Installing TALISES</a></li>
+        <li class="first-level active"><a href="#installing-talises">Installing TALISES</a></li>
             <li class="second-level"><a href="#prerequisites">Prerequisites</a></li>
                 
-            <li class="second-level"><a href="#running_the_installation_script">Running the installation script</a></li>
+            <li class="second-level"><a href="#running-the-installation-script">Running the installation script</a></li>
                 
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="installing_talises">Installing TALISES<a class="headerlink" href="#installing_talises" title="Permanent link">&para;</a></h1>
+<h1 id="installing-talises">Installing TALISES</h1>
 <hr />
-<p>TALISES uses the following lbaries:</p>
+<p>TALISES uses the following libaries:</p>
 <ul>
 <li><a href="http://www.fftw.org/">FFTW</a> for Discrete-Fourier-Transforms</li>
 <li><a href="https://www.gnu.org/software/gsl/">GSL(CBLAS)</a> for numeric diagonalization and matrix exponentiation</li>
@@ -139,7 +166,7 @@
 </ul>
 <p>You need this three libaries in order to use TALISES. If they are already installed on your machine, you only need to have the libary paths in your environment variables (e.g LD_LIBRARY_PATH) when you compile the program.<br />
 TALISES also comes with an installation script which is written in Common Lisp, that will download the required libaries, compile them and create <a href="https://modules.readthedocs.io/en/latest/">environment-module</a> files. The use of environment-modules is advised. </p>
-<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<h3 id="prerequisites">Prerequisites</h3>
 <p>Necessary are compilers (gcc, g++), build atomation tools (make, cmake) and the <a href="https://www.boost.org/doc/libs/">Boost C++ Libraries</a>.
 You can install these with</p>
 <pre><code>sudo apt install build-essential cmake libboost-all-dev
@@ -147,7 +174,7 @@ You can install these with</p>
 
 <p>If you want to use the install script that comes with TALISES you need a Common Lisp compiler (we will use <a href="http://www.sbcl.org/">SBCL</a>) and environment-modules. They can be installed with <code>sudo apt install sbcl environment-modules</code>.
 After installation of environment-modules the system needs a reboot in order to work.</p>
-<h3 id="running_the_installation_script">Running the installation script<a class="headerlink" href="#running_the_installation_script" title="Permanent link">&para;</a></h3>
+<h3 id="running-the-installation-script">Running the installation script</h3>
 <p>If you downloaded the git-repository and are within the directory, you can start the installation with</p>
 <pre><code>sbcl --script install.lisp
 </code></pre>

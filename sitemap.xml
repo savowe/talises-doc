@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
-     <loc>None</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/</loc>
      <lastmod>2020-03-19</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/installation/</loc>
      <lastmod>2020-03-19</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/generating_a_wave-function/</loc>
+     <lastmod>2020-03-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/handling_binary_data/</loc>
+     <lastmod>2020-03-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/the_xml_file/</loc>
+     <lastmod>2020-03-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://sascha.vowe.eu/talises-doc/about/license/</loc>
      <lastmod>2020-03-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
