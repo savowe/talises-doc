@@ -45,9 +45,12 @@ For this simply type
 ```
 python3 plotbin.py 0.000_1.bin
 ```
-This will create a .png file which should look like this
-![1D Gaussian wave-function plot](/user-guide/figs/1D_gaussian.png)  
+This will create a .png file which should look like this  
+
+![1D Gaussian wave-function plot](../../../figs/1D_gaussian.png)
+
 See our example for [simulating Rabi oscillations](/user-guide/examples/rabi_oscillations/) which uses this wave-function and transfers it into a second internal state with a oscillatory time-dependent potential.
+
 ------------------
 ### Generating a 2D wave-function
 Following the previous example it is very straightfoward to extend the XML file to generate a wave-function in two dimensions.
@@ -70,8 +73,10 @@ This time we create a 2D Gaussian wave-function centered at \\(x_0=-5\\) and \\(
     <YMIN>-10</YMIN><YMAX>10</YMAX>
 </SIMULATION>
 ````
-If you plot the resulting binary file using the plotbin.py script you should see something like this
-![1D Gaussian wave-function plot](/user-guide/figs/2D_gaussian.png)  
+If you plot the resulting binary file using the plotbin.py script you should see something like this  
+
+![1D Gaussian wave-function plot](../figs/2D_gaussian.png)  
+
 In our example [Momentum transfer in 2D](/user-guide/examples/rabi_oscillations/) you can learn how to use oscillatory time and position dependent potentials (aka light) to move this wave packet into the upper right corner.
 
 ------------------
