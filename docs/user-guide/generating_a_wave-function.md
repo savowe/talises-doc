@@ -77,8 +77,50 @@ If you plot the resulting binary file using the plotbin.py script you should see
 
 ![1D Gaussian wave-function plot](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/2D_gaussian.png)  
 
-In our example [Momentum transfer in 2D](/user-guide/examples/rabi_oscillations/) you can learn how to use oscillatory time and position dependent potentials (aka light) to move this wave packet into the upper right corner.
+In our example [Momentum transfer in 2D](/user-guide/examples/rabi_oscillations/) you can learn how to use oscillatory time and position dependent potentials (aka light) to move this wave packet into the upper right corner.  
 
+You can be much more creative with you wave-functions, for example
+```
+1/2*(sign(x--5)+sign(-x+3)+0)*abs(sin(1/8*(x^2+y^2))*sin(2*(x+y)))*exp( -0.25*(y/3)^2 )
+```
+
+![1D Gaussian wave-function plot](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/arbitrary_wave_function.png)  
+
+### Build-in functions
+
+The muparser libary allows for following functions  
+
+<table>
+	<tbody><tr>
+	  <td><b>Name</b></td>  <td><b>Argc.</b></td>  <td><b>Explanation</b></td>
+	</tr>
+	<tr><td><code>sin</code></td>   <td class="centered">1</td>     <td>sine function</td></tr>
+	<tr><td><code>cos</code></td>   <td class="centered">1</td>     <td>cosine function</td></tr>
+	<tr><td><code>tan</code></td>   <td class="centered">1</td>     <td>tangens function</td></tr>
+	<tr><td><code>asin</code></td>  <td class="centered">1</td>     <td>arcus sine function</td></tr>
+	<tr><td><code>acos</code></td>  <td class="centered">1</td>     <td>arcus cosine function</td></tr>
+	<tr><td><code>atan</code></td>  <td class="centered">1</td>     <td>arcus tangens function</td></tr>
+	<tr><td><code>sinh</code></td>  <td class="centered">1</td>     <td>hyperbolic sine function</td></tr>
+	<tr><td><code>cosh</code></td>  <td class="centered">1</td>     <td>hyperbolic cosine</td></tr>
+	<tr><td><code>tanh</code></td>  <td class="centered">1</td>     <td>hyperbolic tangens function</td></tr>
+	<tr><td><code>asinh</code></td> <td class="centered">1</td>     <td>hyperbolic arcus sine function</td></tr>
+	<tr><td><code>acosh</code></td> <td class="centered">1</td>     <td>hyperbolic arcus tangens function</td></tr>
+	<tr><td><code>atanh</code></td> <td class="centered">1</td>     <td>hyperbolic arcur tangens function</td></tr>
+	<tr><td><code>log2</code></td>  <td class="centered">1</td>     <td>logarithm to the base 2</td></tr>
+	<tr><td><code>log10</code></td> <td class="centered">1</td>     <td>logarithm to the base 10</td></tr>
+	<tr><td><code>log</code></td>   <td class="centered">1</td>     <td>logarithm to base e (2.71828...)</td></tr>
+	<tr><td><code>ln</code></td>    <td class="centered">1</td>     <td>logarithm to base e (2.71828...)</td></tr>
+	<tr><td><code>exp</code></td>   <td class="centered">1</td>     <td>e raised to the power of x</td></tr>
+	<tr><td><code>sqrt</code></td>  <td class="centered">1</td>     <td>square root of a value</td></tr>
+	<tr><td><code>sign</code></td>  <td class="centered">1</td>     <td>sign function -1 if x&lt;0; 1 if x&gt;0</td></tr>
+	<tr><td><code>rint</code></td>  <td class="centered">1</td>     <td>round to nearest integer</td></tr>
+	<tr><td><code>abs</code></td>   <td class="centered">1</td>     <td>absolute value</td></tr>
+	<tr><td><code>min</code></td>   <td class="centered">var.</td>  <td>min of all arguments</td></tr>
+	<tr><td><code>max</code></td>   <td class="centered">var.</td>  <td>max of all arguments</td></tr>
+	<tr><td><code>sum</code></td>   <td class="centered">var.</td>  <td>sum of all arguments</td></tr>
+	<tr><td><code>avg</code></td>   <td class="centered">var.</td>  <td>mean value of all arguments</td></tr>
+</tbody>
+</table>
 ------------------
 ### Importance of sampling frequency
 The split-step Fourier method uses position and momentum space to calculate the wave-function's time-propagation. 
@@ -88,4 +130,3 @@ This means that if \\(\Delta x\\) is the whole position space consisting of \\(N
 we have a sampling rate of \\(\delta x = \Delta x / N\\). If we Fourier transform any wave-form, 
 we can safely represent momentum states within \\(\Delta k = 2\pi / \delta x\\). 
 The sampling rate in momentum space is \\(\delta k = 2\pi / \Delta x\\).
-------------------
