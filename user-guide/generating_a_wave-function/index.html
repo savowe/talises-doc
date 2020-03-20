@@ -97,6 +97,27 @@
 </li>
 
                         
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Examples</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../examples/rabi_oscillations/">Rabi Oscillations</a>
+</li>
+
+        
+            
+<li >
+    <a href="../examples/2D_momentum_transfer/">Momentum transfer in 2D</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
                         </ul>
                     </li>
                 
@@ -147,13 +168,98 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#ok">OK</a></li>
+        <li class="first-level active"><a href="#generating-a-wave-function">Generating a wave-function</a></li>
+            <li class="second-level"><a href="#the-gen_psi_0-utility-program">The gen_psi_0 utility program</a></li>
+                
+                <li class="third-level"><a href="#generating-a-1d-wave-function">Generating a 1D wave-function</a></li>
+                <li class="third-level"><a href="#generating-a-2d-wave-function">Generating a 2D wave-function</a></li>
+                <li class="third-level"><a href="#importance-of-sampling-frequency">Importance of sampling frequency</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="ok">OK</h1>
-<p>$$ \Psi = |\psi\rangle $$</p></div>
+<h1 id="generating-a-wave-function">Generating a wave-function</h1>
+<hr />
+<h2 id="the-gen_psi_0-utility-program">The gen_psi_0 utility program</h2>
+<p>TALISES comes with only two executable programs, one of which is gen_psi_0.
+While the main program does the heavy-duty time propataion of the wave-function, gen_psi_0 is generating the initial wave-function.<br />
+The gen_psi_0 program requires an XML file as input in order to generate a binary data file containing the wave-functions information.<br />
+In the next few sections we generate some exemplary wave-functions.</p>
+<h3 id="generating-a-1d-wave-function">Generating a 1D wave-function</h3>
+<p>The XML file needs to include the following tags  </p>
+<ul>
+<li><code>&lt;DIM&gt;</code>: number of spatial dimensions</li>
+<li><code>&lt;FILENAME&gt;</code>: name of the generated file</li>
+<li><code>&lt;GUESS_1D&gt;</code>: equation describing \(\Psi\) (in the case of 1D)</li>
+<li><code>&lt;NX&gt;</code>: number of sample points. This value requires <a href="#importance-of-sampling-frequency">special attention</a>.</li>
+<li><code>&lt;XMIN&gt;</code> and <code>&lt;XMAX&gt;</code>: bounds of position basis.</li>
+</ul>
+<p>These tags are encapsulated in the <code>&lt;SIMULATION&gt;</code> parrent. A wave function of Gaussian appearance can be generated with</p>
+<pre><code>&lt;SIMULATION&gt;
+  &lt;DIM&gt;1&lt;/DIM&gt; 
+  &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
+  &lt;GUESS_1D&gt;exp( -0.25*((x-x_0)/sigma_x)^2 )&lt;/GUESS_1D&gt;
+  &lt;NX&gt;256&lt;/NX&gt;
+  &lt;XMIN&gt;-10&lt;/XMIN&gt;
+  &lt;XMAX&gt;10&lt;/XMAX&gt;
+  &lt;CONSTANTS&gt;
+    &lt;N&gt;1&lt;/N&gt;
+    &lt;x_0&gt;0&lt;/x_0&gt;
+    &lt;sigma_x&gt;1&lt;/sigma_x&gt;
+  &lt;/CONSTANTS&gt;
+&lt;/SIMULATION&gt;
+</code></pre>
+
+<p>Within the <code>&lt;CONSTANTS&gt;</code> one can define numeric values for constants used in the <code>&lt;GUESS_1D&gt;</code> tag. 
+<code>&lt;N&gt;</code> is a normalization constant, the wave-function is always multiplied with.  </p>
+<p>If we save this file as gauss.xml we can finally generate the wave-function with</p>
+<pre><code>gen_psi_0 gauss.xml
+</code></pre>
+
+<p>This creates a file named 0.000_1.bin in the current working directory. 
+TALISES comes with a some simple python script readbin.py that can convert this data directly into a .mat file or import it into a numpy array in python for further analysis. The second script plotbin.py can make plot of the binary file.<br />
+For this simply type</p>
+<pre><code>python3 plotbin.py 0.000_1.bin
+</code></pre>
+
+<p>This will create a .png file which should look like this
+<img alt="1D Gaussian wave-function plot" src="/user-guide/figs/1D_gaussian.png" /><br />
+See our example for <a href="/user-guide/examples/rabi_oscillations/">simulating Rabi oscillations</a> which uses this wave-function and transfers it into a second internal state with a oscillatory time-dependent potential.</p>
+<hr />
+<h3 id="generating-a-2d-wave-function">Generating a 2D wave-function</h3>
+<p>Following the previous example it is very straightfoward to extend the XML file to generate a wave-function in two dimensions.
+This time we create a 2D Gaussian wave-function centered at \(x_0=-5\) and \(y_0=-5\).  </p>
+<pre><code>&lt;SIMULATION&gt;
+  &lt;DIM&gt;2&lt;/DIM&gt; 
+  &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
+  &lt;GUESS_2D&gt;exp( -0.25*((x-x_0)/sigma_x)^2 )*exp( -0.25*((y-y_0)/sigma_y)^2 )&lt;/GUESS_2D&gt;
+  &lt;CONSTANTS&gt;
+    &lt;N&gt;1&lt;/N&gt;
+    &lt;x_0&gt;-5&lt;/x_0&gt;
+    &lt;y_0&gt;-5&lt;/y_0&gt;
+    &lt;sigma_x&gt;1&lt;/sigma_x&gt;
+    &lt;sigma_y&gt;1&lt;/sigma_y&gt;
+  &lt;/CONSTANTS&gt;
+    &lt;NX&gt;256&lt;/NX&gt;
+    &lt;NY&gt;256&lt;/NY&gt;
+    &lt;XMIN&gt;-10&lt;/XMIN&gt;&lt;XMAX&gt;10&lt;/XMAX&gt;
+    &lt;YMIN&gt;-10&lt;/YMIN&gt;&lt;YMAX&gt;10&lt;/YMAX&gt;
+&lt;/SIMULATION&gt;
+</code></pre>
+
+<p>If you plot the resulting binary file using the plotbin.py script you should see something like this
+<img alt="1D Gaussian wave-function plot" src="/user-guide/figs/2D_gaussian.png" /><br />
+In our example <a href="/user-guide/examples/rabi_oscillations/">Momentum transfer in 2D</a> you can learn how to use oscillatory time and position dependent potentials (aka light) to move this wave packet into the upper right corner.</p>
+<hr />
+<h3 id="importance-of-sampling-frequency">Importance of sampling frequency</h3>
+<p>The split-step Fourier method uses position and momentum space to calculate the wave-function's time-propagation. 
+Therefore, one hast to keep in mind that the momentum state of the wave-function can only be correctly accounted for
+if the space-grid <a href="https://en.wikipedia.org/wiki/Nyquist_frequency">has enough sampling points</a>.<br />
+This means that if \(\Delta x\) is the whole position space consisting of \(N\) samples, 
+we have a sampling rate of \(\delta x = \Delta x / N\). If we Fourier transform any wave-form, 
+we can safely represent momentum states within \(\Delta k = 2\pi / \delta x\). 
+The sampling rate in momentum space is \(\delta k = 2\pi / \Delta x\).</p>
+<hr /></div>
         
         
     </div>
