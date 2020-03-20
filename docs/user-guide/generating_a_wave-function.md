@@ -81,8 +81,9 @@ In our example [Momentum transfer in 2D](/user-guide/examples/rabi_oscillations/
 
 You can be much more creative with you wave-functions, for example
 ```
-1/2*(sign(x--5)+sign(-x+3)+0)*abs(sin(1/8*(x^2+y^2))*sin(2*(x+y)))*exp( -0.25*(y/3)^2 )
+1/2*(sign(x--5)+sign(-x+3))*abs(sin(1/8*(x^2+y^2))*sin(2*(x+y)))*exp(-0.25*(y/3)^2)
 ```
+will give you
 
 ![1D Gaussian wave-function plot](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/arbitrary_wave_function.png)  
 

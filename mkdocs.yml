@@ -10,7 +10,7 @@ nav:
   - User Guide:
     - Generating a wave-function: 'user-guide/generating_a_wave-function.md'
     - Handling binary data: 'user-guide/handling_binary_data.md'
-    - The XML file: 'user-guide/the_xml_file.md'
+    - Time-propagation: 'user-guide/time-propagation.md'
     - Examples:
       - Rabi Oscillations: 'user-guide/examples/rabi_oscillations.md'
       - Momentum transfer in 2D: 'user-guide/examples/2D_momentum_transfer.md'
