@@ -17,10 +17,10 @@ sudo apt install build-essential cmake libboost-all-dev
 ```
 If you want to use the install script that comes with TALISES you need a Common Lisp compiler (we will use [SBCL](http://www.sbcl.org/)) and environment-modules. They can be installed with
 ```
-sudo apt install sbcl environment-modules
+sudo apt install sbcl curl environment-modules
 ```
 
-After installation of environment-modules the system needs a reboot in order to work.
+After installation of environment-modules you may need to execute `add.modules` and reboot the system.
 
 ### Running the installation script
 
