@@ -93,7 +93,7 @@
                         
                             
 <li >
-    <a href="../user-guide/time-propagation/">Time-propagation</a>
+    <a href="../user-guide/time-propagation/">Propagate the wave-function</a>
 </li>
 
                         
@@ -193,8 +193,11 @@ You can install these with</p>
 <pre><code>sudo apt install build-essential cmake libboost-all-dev
 </code></pre>
 
-<p>If you want to use the install script that comes with TALISES you need a Common Lisp compiler (we will use <a href="http://www.sbcl.org/">SBCL</a>) and environment-modules. They can be installed with <code>sudo apt install sbcl environment-modules</code>.
-After installation of environment-modules the system needs a reboot in order to work.</p>
+<p>If you want to use the install script that comes with TALISES you need a Common Lisp compiler (we will use <a href="http://www.sbcl.org/">SBCL</a>) and environment-modules. They can be installed with</p>
+<pre><code>sudo apt install sbcl environment-modules
+</code></pre>
+
+<p>After installation of environment-modules the system needs a reboot in order to work.</p>
 <h3 id="running-the-installation-script">Running the installation script</h3>
 <p>If you downloaded the git-repository and are within the directory, you can start the installation with</p>
 <pre><code>sbcl --script install.lisp

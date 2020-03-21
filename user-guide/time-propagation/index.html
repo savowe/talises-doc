@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
     
-    <title>Time-propagation - TALISES Documentation</title>
+    <title>Propagate the wave-function - TALISES Documentation</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -93,7 +93,7 @@
                         
                             
 <li class="active">
-    <a href="./">Time-propagation</a>
+    <a href="./">Propagate the wave-function</a>
 </li>
 
                         
@@ -168,11 +168,45 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#propagate-the-wave-function">Propagate the wave-function</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-</div>
+<h1 id="propagate-the-wave-function">Propagate the wave-function</h1>
+<p>The heart of TALISES lies in the ability to propagate a wave-function 
+\( \hat{U} |\Psi(r,t_0)\rangle = |\Psi(r,t)\rangle\) in accordance to the Schrödinger equation
+<div>$$i\hbar\frac{\partial}{\partial t} |\Psi(r,t)\rangle 
+= \Big( -\frac{\hbar^2}{2m} \nabla^2 + \hat{V} (\Psi, r, t) \Big)  |\Psi(r,t)\rangle .$$</div>
+The wave-function includes internal and external degrees of freedom and you can easily
+implement your own position-, time-dependent or nonlinear potential \( \hat{V} (\Psi, r, t) \).</p>
+<pre><code>&lt;SIMULATION&gt;
+  &lt;DIM&gt;1&lt;/DIM&gt;
+  &lt;INTERNAL_DIM&gt;3&lt;/INTERNAL_DIM&gt;
+  &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
+  &lt;FILENAME_2&gt;0.000_2.bin&lt;/FILENAME_2&gt;
+  &lt;FILENAME_3&gt;0.000_2.bin&lt;/FILENAME_3&gt;
+  &lt;CONSTANTS&gt;
+    &lt;b&gt;0&lt;/b&gt;
+  &lt;/CONSTANTS&gt;
+  &lt;VCONSTANTS&gt;
+    &lt;Alpha_1&gt;0.000365368,0.000365368,0.000365368, 0.000365368&lt;/Alpha_1&gt;
+  &lt;/VCONSTANTS&gt;
+  &lt;SEQUENCE&gt;
+    &lt;interact Nk=&quot;500&quot; dt=&quot;0.02&quot; output_freq=&quot;each&quot; pn_freq=&quot;each&quot; rabi_output_freq=&quot;none&quot;
+    H_11_real=&quot;0&quot; H_11_imag=&quot;0&quot;         H_12_real=&quot;0&quot; H_12_imag=&quot;0&quot;
+                                        H_22_real=&quot;0&quot; H_22_imag=&quot;0&quot;     &gt;50&lt;/interact&gt; 
+    &lt;freeprop Nk=&quot;1000&quot; dt=&quot;2&quot; output_freq=&quot;each&quot; pn_freq=&quot;each&quot;
+        H_11_real=&quot;0&quot; H_11_imag=&quot;0&quot;     H_22_real=&quot;0&quot; H_22_imag=&quot;0&quot;     2000&lt;/freeprop&gt;
+  &lt;/SEQUENCE&gt;
+&lt;/SIMULATION&gt;
+
+</code></pre>
+
+<p>TODO:<br />
+- implement nonlinear potential in additional sequence. real and imaginary part of individual internal levels.<br />
+- change H to V in code<br />
+- remove alpha and exchange it by L, T and m.</p></div>
         
         
     </div>
