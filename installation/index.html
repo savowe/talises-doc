@@ -194,10 +194,10 @@ You can install these with</p>
 </code></pre>
 
 <p>If you want to use the install script that comes with TALISES you need a Common Lisp compiler (we will use <a href="http://www.sbcl.org/">SBCL</a>) and environment-modules. They can be installed with</p>
-<pre><code>sudo apt install sbcl environment-modules
+<pre><code>sudo apt install sbcl curl environment-modules
 </code></pre>
 
-<p>After installation of environment-modules the system needs a reboot in order to work.</p>
+<p>After installation of environment-modules you may need to execute <code>add.modules</code> and reboot the system.</p>
 <h3 id="running-the-installation-script">Running the installation script</h3>
 <p>If you downloaded the git-repository and are within the directory, you can start the installation with</p>
 <pre><code>sbcl --script install.lisp

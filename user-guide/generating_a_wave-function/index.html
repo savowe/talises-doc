@@ -191,28 +191,36 @@ In the next few sections we generate some exemplary wave-functions.</p>
 <ul>
 <li><code>&lt;DIM&gt;</code>: number of spatial dimensions</li>
 <li><code>&lt;FILENAME&gt;</code>: name of the generated file</li>
-<li><code>&lt;GUESS_1D&gt;</code>: equation describing \(\Psi\) (in the case of 1D)</li>
+<li><code>&lt;PSI_REAL_1D&gt;</code>: equation describing the real part of \(\Psi\) (in the case of 1D)</li>
+<li><code>&lt;PSI_IMAG_1D&gt;</code>: equation describing the imaginary part of \(\Psi\)</li>
+<li><code>&lt;N&gt;</code>: the wave-function gets normalized to \( \int \mathrm{d}\vec{r} |\Psi|^2 = N\)</li>
 <li><code>&lt;NX&gt;</code>: number of sample points. This value requires <a href="#importance-of-sampling-frequency">special attention</a>.</li>
 <li><code>&lt;XMIN&gt;</code> and <code>&lt;XMAX&gt;</code>: bounds of position basis.</li>
 </ul>
-<p>These tags are encapsulated in the <code>&lt;SIMULATION&gt;</code> parrent. A wave function of Gaussian appearance can be generated with</p>
+<p>These tags are encapsulated in the <code>&lt;SIMULATION&gt;</code> parrent. A wave function of Gaussian appearance with initial momentum \(\hbar k\) can be generated with</p>
 <pre><code>&lt;SIMULATION&gt;
   &lt;DIM&gt;1&lt;/DIM&gt; 
   &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
-  &lt;GUESS_1D&gt;exp( -0.25*((x-x_0)/sigma_x)^2 )&lt;/GUESS_1D&gt;
+  &lt;PSI_REAL_1D&gt;exp( -0.25*((x-x_0)/sigma_x)^2 )*cos(k*x)&lt;/PSI_REAL_1D&gt;
+  &lt;PSI_IMAG_1D&gt;exp( -0.25*((x-x_0)/sigma_x)^2 )*sin(k*x)&lt;/PSI_IMAG_1D&gt;
   &lt;NX&gt;256&lt;/NX&gt;
   &lt;XMIN&gt;-10&lt;/XMIN&gt;
   &lt;XMAX&gt;10&lt;/XMAX&gt;
   &lt;CONSTANTS&gt;
     &lt;N&gt;1&lt;/N&gt;
+    &lt;k&gt;2&lt;/k&gt;
     &lt;x_0&gt;0&lt;/x_0&gt;
     &lt;sigma_x&gt;1&lt;/sigma_x&gt;
   &lt;/CONSTANTS&gt;
 &lt;/SIMULATION&gt;
 </code></pre>
 
-<p>Within the <code>&lt;CONSTANTS&gt;</code> one can define numeric values for constants used in the <code>&lt;GUESS_1D&gt;</code> tag. 
-<code>&lt;N&gt;</code> is a normalization constant, the wave-function is always multiplied with.  </p>
+<p>Within the <code>&lt;CONSTANTS&gt;</code> one can define numeric values for constants used in the <code>&lt;PSI_****_1D&gt;</code> tag.<br />
+Since C++ does not have complex numbers natively, we define real and imaginary part seperately.
+In this example the wave-function has a Gaussian density distribution and an initial momentum:
+$$ \Psi \approx \exp \Big[-\Big(\frac{x-x_0}{2\sigma_x}\Big)^2 + i k x \Big]  $$
+<code>&lt;N&gt;</code> is a normalization constant. The program normalizes the wave-functions, such that
+\( \int \mathrm{d}\vec{r} |\Psi|^2 = N\).  </p>
 <p>If we save this file as gauss.xml we can finally generate the wave-function with</p>
 <pre><code>gen_psi_0 gauss.xml
 </code></pre>
@@ -233,7 +241,8 @@ This time we create a 2D Gaussian wave-function centered at \(x_0=-5\) and \(y_0
 <pre><code>&lt;SIMULATION&gt;
   &lt;DIM&gt;2&lt;/DIM&gt; 
   &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
-  &lt;GUESS_2D&gt;exp( -0.25*((x-x_0)/sigma_x)^2 )*exp( -0.25*((y-y_0)/sigma_y)^2 )&lt;/GUESS_2D&gt;
+  &lt;PSI_REAL_2D&gt;exp( -0.25*((x-x_0)/sigma_x)^2 )*exp( -0.25*((y-y_0)/sigma_y)^2 )&lt;/PSI_REAL_2D&gt;
+  &lt;PSI_IMAG_2D&gt; 0 &lt;/PSI_IMAG_2D&gt;
   &lt;CONSTANTS&gt;
     &lt;N&gt;1&lt;/N&gt;
     &lt;x_0&gt;-5&lt;/x_0&gt;
