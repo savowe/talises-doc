@@ -12,28 +12,36 @@ The XML file needs to include the following tags
 
 - `<DIM>`: number of spatial dimensions
 - `<FILENAME>`: name of the generated file
-- `<GUESS_1D>`: equation describing \\(\Psi\\) (in the case of 1D)
+- `<PSI_REAL_1D>`: equation describing the real part of \\(\Psi\\) (in the case of 1D)
+- `<PSI_IMAG_1D>`: equation describing the imaginary part of \\(\Psi\\)
+- `<N>`: the wave-function gets normalized to \\( \int \mathrm{d}\vec{r} |\Psi|^2 = N\\)
 - `<NX>`: number of sample points. This value requires [special attention](#importance-of-sampling-frequency).
 - `<XMIN>` and `<XMAX>`: bounds of position basis.
 
-These tags are encapsulated in the `<SIMULATION>` parrent. A wave function of Gaussian appearance can be generated with
+These tags are encapsulated in the `<SIMULATION>` parrent. A wave function of Gaussian appearance with initial momentum \\(\hbar k\\) can be generated with
 ```
 <SIMULATION>
   <DIM>1</DIM> 
   <FILENAME>0.000_1.bin</FILENAME>
-  <GUESS_1D>exp( -0.25*((x-x_0)/sigma_x)^2 )</GUESS_1D>
+  <PSI_REAL_1D>exp( -0.25*((x-x_0)/sigma_x)^2 )*cos(k*x)</PSI_REAL_1D>
+  <PSI_IMAG_1D>exp( -0.25*((x-x_0)/sigma_x)^2 )*sin(k*x)</PSI_IMAG_1D>
   <NX>256</NX>
   <XMIN>-10</XMIN>
   <XMAX>10</XMAX>
   <CONSTANTS>
     <N>1</N>
+	<k>2</k>
     <x_0>0</x_0>
     <sigma_x>1</sigma_x>
   </CONSTANTS>
 </SIMULATION>
 ```
-Within the `<CONSTANTS>` one can define numeric values for constants used in the `<GUESS_1D>` tag. 
-`<N>` is a normalization constant, the wave-function is always multiplied with.  
+Within the `<CONSTANTS>` one can define numeric values for constants used in the `<PSI_****_1D>` tag.  
+Since C++ does not have complex numbers natively, we define real and imaginary part seperately.
+In this example the wave-function has a Gaussian density distribution and an initial momentum:
+$$ \Psi \approx \exp \Big[-\Big(\frac{x-x_0}{2\sigma_x}\Big)^2 + i k x \Big]  $$
+`<N>` is a normalization constant. The program normalizes the wave-functions, such that
+\\( \int \mathrm{d}\vec{r} |\Psi|^2 = N\\).  
 
 If we save this file as gauss.xml we can finally generate the wave-function with
 ````
@@ -59,7 +67,8 @@ This time we create a 2D Gaussian wave-function centered at \\(x_0=-5\\) and \\(
 <SIMULATION>
   <DIM>2</DIM> 
   <FILENAME>0.000_1.bin</FILENAME>
-  <GUESS_2D>exp( -0.25*((x-x_0)/sigma_x)^2 )*exp( -0.25*((y-y_0)/sigma_y)^2 )</GUESS_2D>
+  <PSI_REAL_2D>exp( -0.25*((x-x_0)/sigma_x)^2 )*exp( -0.25*((y-y_0)/sigma_y)^2 )</PSI_REAL_2D>
+  <PSI_IMAG_2D> 0 </PSI_IMAG_2D>
   <CONSTANTS>
     <N>1</N>
     <x_0>-5</x_0>
