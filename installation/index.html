@@ -24,6 +24,10 @@
     <link href="../css/cinder.min.css" rel="stylesheet">
 
     
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -183,30 +187,30 @@
 <ul>
 <li><a href="http://www.fftw.org/">FFTW</a> for Discrete-Fourier-Transforms</li>
 <li><a href="https://www.gnu.org/software/gsl/">GSL(CBLAS)</a> for numeric diagonalization and matrix exponentiation</li>
-<li><a href="https://beltoforion.de/article.php?a=muparser">muParser</a> for parsing of mathematical formulas</li>
+<li><a href="https://beltoforion.de/article.php?a=muparser">muparser</a> for parsing of mathematical formulas</li>
 </ul>
-<p>You need this three libaries in order to use TALISES. If they are already installed on your machine, you only need to have the libary paths in your environment variables (e.g LD_LIBRARY_PATH) when you compile the program.<br />
+<p>You need this three libaries in order to use TALISES. If they are already installed on your machine, you only need the libary paths in your environment variables (e.g LD_LIBRARY_PATH) whilst you compile the program.<br />
 TALISES also comes with an installation script which is written in Common Lisp, that will download the required libaries, compile them and create <a href="https://modules.readthedocs.io/en/latest/">environment-module</a> files. The use of environment-modules is advised. </p>
 <h3 id="prerequisites">Prerequisites</h3>
-<p>Necessary are compilers (gcc, g++), build atomation tools (make, cmake) and the <a href="https://www.boost.org/doc/libs/">Boost C++ Libraries</a>.
+<p>Necessities are compilers (gcc, g++), build automation tools (make, cmake) and the <a href="https://www.boost.org/doc/libs/">Boost C++ Libraries</a>.
 You can install these with</p>
-<pre><code>sudo apt install build-essential cmake libboost-all-dev
+<pre><code class="text">sudo apt install build-essential cmake libboost-all-dev
 </code></pre>
 
 <p>If you want to use the install script that comes with TALISES you need a Common Lisp compiler (we will use <a href="http://www.sbcl.org/">SBCL</a>) and environment-modules. They can be installed with</p>
-<pre><code>sudo apt install sbcl curl environment-modules
+<pre><code class="text">sudo apt install sbcl curl environment-modules
 </code></pre>
 
 <p>After installation of environment-modules you may need to execute <code>add.modules</code> and reboot the system.</p>
 <h3 id="running-the-installation-script">Running the installation script</h3>
 <p>If you downloaded the git-repository and are within the directory, you can start the installation with</p>
-<pre><code>sbcl --script install.lisp
+<pre><code class="text">sbcl --script install.lisp
 </code></pre>
 
 <p>The script will check for some dependencies e.g. compilers.
 If all tests pass you will be greeted by the installer.
 Here you have severall options to chose from.</p>
-<pre><code>  _________    __    _________ ___________
+<pre><code class="text">  _________    __    _________ ___________
  /_  __/   |  / /   /  _/ ___// ____/ ___/
   / / / /| | / /    / / \__ \/ __/  \__ \ 
  / / / ___ |/ /____/ / ___/ / /___ ___/ / 
@@ -235,7 +239,7 @@ q - Abort Installation.
 <p>The build directory will contain the source files, the installation directory the compiled binaries and the module directory the module files which will allow you to quickly switch between different environments.<br />
 We recommend to install the libaries individually (first gsl, then muparser, etc.), so if something goes wrong you can easily identify the problems.<br />
 When GSL, muparser and FFTW are installed you need to make sure that your environment variables point to the libary directories. Otherwise TALISES can not be compiled. Type <code>module avail</code> to see a list of the environment files you have. If environment-modules can find the folder you saved the modulefiles in you should see</p>
-<pre><code>----- /home/username/local/modules/modulefiles/ ------
+<pre><code class="text">----- /home/username/local/modules/modulefiles/ ------
 fftw-3.3.8       gsl-2.5          muparser-2.2.6.1
 </code></pre>
 
@@ -258,6 +262,9 @@ If everything went right you will find the compiled binaries in the installation
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../js/bootstrap-3.0.3.min.js"></script>
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     
     <script>var base_url = ".."</script>
     
