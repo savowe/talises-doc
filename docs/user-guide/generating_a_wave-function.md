@@ -42,54 +42,64 @@ Since C++ does not support complex numbers natively, we define real and imaginar
 For example, if you would like to give the wave-function an initial momentum \\(\hbar k\\)
 $$ \Psi \approx \exp \Big[-\Big(\frac{x-x_0}{2\sigma_x}\Big)^2 + i k x \Big]  $$
 the tags would read
-```
-  <PSI_REAL_1D>exp( -0.25*((x-x_0)/sigma_x)^2 ) * cos(k*x)</PSI_REAL_1D>
-  <PSI_IMAG_1D>exp( -0.25*((x-x_0)/sigma_x)^2 ) * sin(k*x)</PSI_IMAG_1D>
+```xml
+<PSI_REAL_1D>exp( -0.25*((x-x_0)/sigma_x)^2 ) * cos(k*x)</PSI_REAL_1D>
+<PSI_IMAG_1D>exp( -0.25*((x-x_0)/sigma_x)^2 ) * sin(k*x)</PSI_IMAG_1D>
 ```
 `<N>` is a normalization constant. The program normalizes the wave-functions, such that
 \\( \int \mathrm{d}\vec{r} |\Psi|^2 = N\\).  
 Within `<ALGORITHM>` we define important numbers necessary for the discretization of the spatial grid such as `<NX>`, `<XMIN>` and `<XMAX>`.
 
-If we save this file as gauss.xml we can finally generate the wave-function with
-````
+If we save this file as gauss.xml we can generate the wave-function with
+```text
 gen_psi_0 gauss.xml
-````
-This creates a file named 0.000_1.bin in the current working directory. 
-TALISES comes with a some simple python script readbin.py that can convert this data directly into a .mat file or import it into a numpy array in python for further analysis. The second script plotbin.py can make plot of the binary file.  
-For this simply type
 ```
-python3 plotbin.py 0.000_1.bin
+This creates a file named 0.000_1.bin in the current working directory.  
+TALISES generated data can be easily handled with the python package [talisestools](https://pypi.org/project/talisestools/).
+You can install it via the python package manager using
+```text
+pip install talisestools
+```
+(More details on the package's funcionallity is described in [Handling binary data](/user-guide/handling_binary_data/#the-talisestools-package))  
+We can have a look at the wave-function by using talisestools' plotbin function in python 
+```python
+import talisestools as tt
+tt.plotbin("0.000_1.bin")
 ```
 This will create a .png file which should look like this  
 
 ![1D Gaussian wave-function plot](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/1D_gaussian.png)
 
-See our example for [simulating Rabi oscillations](/user-guide/examples/rabi_oscillations/) which uses this wave-function and transfers it into a second internal state with a oscillatory time-dependent potential.
+Naturally, TALISES uses SI units for all computations.  
+If you want to see this wave-function in action see our example for [simulating Rabi oscillations](/user-guide/examples/rabi_oscillations/) which uses this wave-function and transfers it into a second internal state with a oscillatory time-dependent potential.
 
 ------------------
 ### Generating a 2D wave-function
 Following the previous example it is very straightfoward to extend the XML file to generate a wave-function in two dimensions.
-This time we create a 2D Gaussian wave-function centered at \\(x_0=-5\\) and \\(y_0=-5\\).  
+This time we create a 2D Gaussian wave-function centered at \\(x_0=-5\mu\text{m}\\), \\(y_0=0\\) 
+and width \\(\sigma_x=0.5\mu\text{m}\\), \\(\sigma_y = 2\mu\text{m}\\).  
 ````
 <SIMULATION>
   <DIM>2</DIM> 
   <FILENAME>0.000_1.bin</FILENAME>
   <PSI_REAL_2D>exp( -0.25*((x-x_0)/sigma_x)^2 )*exp( -0.25*((y-y_0)/sigma_y)^2 )</PSI_REAL_2D>
-  <PSI_IMAG_2D> 0 </PSI_IMAG_2D>
+  <PSI_IMAG_2D>0</PSI_IMAG_2D>
   <CONSTANTS>
     <N>1</N>
-    <x_0>-5</x_0>
-    <y_0>-5</y_0>
-    <sigma_x>1</sigma_x>
-    <sigma_y>1</sigma_y>
+    <x_0>-5e-6</x_0>
+    <y_0>0</y_0>
+    <sigma_x>0.5e-6</sigma_x>
+    <sigma_y>2e-6</sigma_y>
   </CONSTANTS>
+   <ALGORITHM>
     <NX>256</NX>
     <NY>256</NY>
-    <XMIN>-10</XMIN><XMAX>10</XMAX>
-    <YMIN>-10</YMIN><YMAX>10</YMAX>
+    <XMIN>-10e-6</XMIN><XMAX>10e-6</XMAX>
+    <YMIN>-10e-6</YMIN><YMAX>10e-6</YMAX>
+    </ALGORITHM>
 </SIMULATION>
 ````
-If you plot the resulting binary file using the plotbin.py script you should see something like this  
+If you plot the resulting binary file using the plotbin function you will see something like this  
 
 ![1D Gaussian wave-function plot](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/2D_gaussian.png)  
 
@@ -97,7 +107,7 @@ In our example [Momentum transfer in 2D](/user-guide/examples/rabi_oscillations/
 
 You can be much more creative with you wave-functions, for example
 ```
-1/2*(sign(x--5)+sign(-x+3))*abs(sin(1/8*(x^2+y^2))*sin(2*(x+y)))*exp(-0.25*(y/3)^2)
+1/2*(sign(x--8)+sign(-x+3))*abs(sin(1/8*(x^2+y^2))*sin(2*(x+y)))*exp(-0.25*(y/3)^2)
 ```
 will give you
 

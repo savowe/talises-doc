@@ -12,11 +12,11 @@ TALISES also comes with an installation script which is written in Common Lisp, 
 ### Prerequisites
 Necessities are compilers (gcc, g++), build automation tools (make, cmake) and the [Boost C++ Libraries](https://www.boost.org/doc/libs/).
 You can install these with
-```
+```text
 sudo apt install build-essential cmake libboost-all-dev
 ```
 If you want to use the install script that comes with TALISES you need a Common Lisp compiler (we will use [SBCL](http://www.sbcl.org/)) and environment-modules. They can be installed with
-```
+```text
 sudo apt install sbcl curl environment-modules
 ```
 
@@ -25,14 +25,14 @@ After installation of environment-modules you may need to execute `add.modules` 
 ### Running the installation script
 
 If you downloaded the git-repository and are within the directory, you can start the installation with
-```
+```text
 sbcl --script install.lisp
 ```
 The script will check for some dependencies e.g. compilers.
 If all tests pass you will be greeted by the installer.
 Here you have severall options to chose from.
 
-````
+````text
   _________    __    _________ ___________
  /_  __/   |  / /   /  _/ ___// ____/ ___/
   / / / /| | / /    / / \__ \/ __/  \__ \ 
@@ -61,7 +61,7 @@ q - Abort Installation.
 The build directory will contain the source files, the installation directory the compiled binaries and the module directory the module files which will allow you to quickly switch between different environments.  
 We recommend to install the libaries individually (first gsl, then muparser, etc.), so if something goes wrong you can easily identify the problems.  
 When GSL, muparser and FFTW are installed you need to make sure that your environment variables point to the libary directories. Otherwise TALISES can not be compiled. Type `module avail` to see a list of the environment files you have. If environment-modules can find the folder you saved the modulefiles in you should see
-````
+````text
 ----- /home/username/local/modules/modulefiles/ ------
 fftw-3.3.8       gsl-2.5          muparser-2.2.6.1
 ````

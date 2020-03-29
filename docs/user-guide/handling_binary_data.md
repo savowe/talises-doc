@@ -74,9 +74,9 @@ It generates a .png file of the same name.
 
 #### __talisestools.readall(n_int_state, save=False )__:  
 The readall function generalizes the readbin function. 
-TALISES generates seperated binary files for the different internal states.
-The file end in `_1.bin`, `_2.bin` for the first, second ect. internal state.
-The readall function takes an integer argument specifying this internal state and tries to find alle binary file associated with it.
+During computation of the wave-function's time propagation TALISES generates seperated binary files for the different internal states.
+The files  end in `_1.bin`, `_2.bin` for the first, second ect. internal state.
+The readall function takes an integer argument specifying this internal state and tries to find all binary file associated with it.
 It then returns a dictionary containing the binary data of wave-function amplitudes, time ect. of all found binary files.
 Optionally one can save the binary file as a .mat file.  
 &nbsp;&nbsp;&nbsp;&nbsp;__Paramters:__ n_int_state: integer specifying internal state  
