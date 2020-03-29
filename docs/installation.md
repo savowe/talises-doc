@@ -4,13 +4,13 @@ TALISES uses the following libaries:
 
 - [FFTW](http://www.fftw.org/) for Discrete-Fourier-Transforms
 - [GSL(CBLAS)](https://www.gnu.org/software/gsl/) for numeric diagonalization and matrix exponentiation
-- [muParser](https://beltoforion.de/article.php?a=muparser) for parsing of mathematical formulas
+- [muparser](https://beltoforion.de/article.php?a=muparser) for parsing of mathematical formulas
 
-You need this three libaries in order to use TALISES. If they are already installed on your machine, you only need to have the libary paths in your environment variables (e.g LD_LIBRARY_PATH) when you compile the program.  
+You need this three libaries in order to use TALISES. If they are already installed on your machine, you only need the libary paths in your environment variables (e.g LD_LIBRARY_PATH) whilst you compile the program.  
 TALISES also comes with an installation script which is written in Common Lisp, that will download the required libaries, compile them and create [environment-module](https://modules.readthedocs.io/en/latest/) files. The use of environment-modules is advised. 
 
 ### Prerequisites
-Necessary are compilers (gcc, g++), build atomation tools (make, cmake) and the [Boost C++ Libraries](https://www.boost.org/doc/libs/).
+Necessities are compilers (gcc, g++), build automation tools (make, cmake) and the [Boost C++ Libraries](https://www.boost.org/doc/libs/).
 You can install these with
 ```
 sudo apt install build-essential cmake libboost-all-dev

@@ -1,8 +1,8 @@
 # Generating a wave-function
 ------------------------
 ## The gen_psi_0 utility program
-TALISES comes with only two executable programs, one of which is gen_psi_0.
-While the main program does the heavy-duty time propataion of the wave-function, gen_psi_0 is generating the initial wave-function.  
+TALISES comes with two executable programs, one of which is gen_psi_0.
+While the main program does the heavy-duty calculations for wave-function's time-propagation, gen_psi_0 is generating the initial wave-function.  
 The gen_psi_0 program requires an XML file as input in order to generate a binary data file containing the wave-functions information.  
 In the next few sections we generate some exemplary wave-functions.
 
@@ -18,30 +18,37 @@ The XML file needs to include the following tags
 - `<NX>`: number of sample points. This value requires [special attention](#importance-of-sampling-frequency).
 - `<XMIN>` and `<XMAX>`: bounds of position basis.
 
-These tags are encapsulated in the `<SIMULATION>` parrent. A wave function of Gaussian appearance with initial momentum \\(\hbar k\\) can be generated with
+These tags are encapsulated in the `<SIMULATION>` parrent. A wave function of Gaussian appearance can be generated with
 ```
 <SIMULATION>
-  <DIM>1</DIM> 
+  <DIM>1</DIM>
   <FILENAME>0.000_1.bin</FILENAME>
-  <PSI_REAL_1D>exp( -0.25*((x-x_0)/sigma_x)^2 )*cos(k*x)</PSI_REAL_1D>
-  <PSI_IMAG_1D>exp( -0.25*((x-x_0)/sigma_x)^2 )*sin(k*x)</PSI_IMAG_1D>
-  <NX>256</NX>
-  <XMIN>-10</XMIN>
-  <XMAX>10</XMAX>
+  <PSI_REAL_1D>exp( -0.25*((x-x_0)/sigma_x)^2 )</PSI_REAL_1D>
+  <PSI_IMAG_1D>0</PSI_IMAG_1D>
+  <ALGORITHM>
+    <NX>256</NX>
+    <XMIN>-10e-6</XMIN>
+    <XMAX>10e-6</XMAX>
+  </ALGORITHM>
   <CONSTANTS>
     <N>1</N>
-	<k>2</k>
     <x_0>0</x_0>
-    <sigma_x>1</sigma_x>
+    <sigma_x>1e-6</sigma_x>
   </CONSTANTS>
 </SIMULATION>
 ```
-Within the `<CONSTANTS>` one can define numeric values for constants used in the `<PSI_****_1D>` tag.  
-Since C++ does not have complex numbers natively, we define real and imaginary part seperately.
-In this example the wave-function has a Gaussian density distribution and an initial momentum:
+Within the `<CONSTANTS>` tag one can define numeric values for constants used in the `<PSI_****_1D>` tag.  
+Since C++ does not support complex numbers natively, we define real and imaginary part seperately.
+For example, if you would like to give the wave-function an initial momentum \\(\hbar k\\)
 $$ \Psi \approx \exp \Big[-\Big(\frac{x-x_0}{2\sigma_x}\Big)^2 + i k x \Big]  $$
+the tags would read
+```
+  <PSI_REAL_1D>exp( -0.25*((x-x_0)/sigma_x)^2 ) * cos(k*x)</PSI_REAL_1D>
+  <PSI_IMAG_1D>exp( -0.25*((x-x_0)/sigma_x)^2 ) * sin(k*x)</PSI_IMAG_1D>
+```
 `<N>` is a normalization constant. The program normalizes the wave-functions, such that
 \\( \int \mathrm{d}\vec{r} |\Psi|^2 = N\\).  
+Within `<ALGORITHM>` we define important numbers necessary for the discretization of the spatial grid such as `<NX>`, `<XMIN>` and `<XMAX>`.
 
 If we save this file as gauss.xml we can finally generate the wave-function with
 ````
