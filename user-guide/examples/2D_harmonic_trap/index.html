@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Sascha Vowe">
-    <link rel="canonical" href="https://sascha.vowe.eu/talises-doc/installation/">
-    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="canonical" href="https://sascha.vowe.eu/talises-doc/user-guide/examples/2D_harmonic_trap/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
 
     
-    <title>Installation - TALISES Documentation</title>
+    <title>2D trap with momentum transfer - TALISES Documentation</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
     <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="../css/base.min.css" rel="stylesheet">
-    <link href="../css/cinder.min.css" rel="stylesheet">
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
 
     
         
@@ -58,7 +58,7 @@
 
             <!-- Main title -->
 
-            <a class="navbar-brand" href="..">TALISES Documentation</a>
+            <a class="navbar-brand" href="../../..">TALISES Documentation</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -68,36 +68,36 @@
                 
                 
                     <li >
-                        <a href="..">Home</a>
+                        <a href="../../..">Home</a>
                     </li>
                 
                 
                 
-                    <li class="active">
-                        <a href="./">Installation</a>
+                    <li >
+                        <a href="../../../installation/">Installation</a>
                     </li>
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../user-guide/generating_a_wave-function/">Generating a wave-function</a>
+    <a href="../../generating_a_wave-function/">Generating a wave-function</a>
 </li>
 
                         
                             
 <li >
-    <a href="../user-guide/handling_binary_data/">Handling binary data</a>
+    <a href="../../handling_binary_data/">Handling binary data</a>
 </li>
 
                         
                             
 <li >
-    <a href="../user-guide/time-propagation/">Propagate the wave-function</a>
+    <a href="../../time-propagation/">Propagate the wave-function</a>
 </li>
 
                         
@@ -108,31 +108,31 @@
         
             
 <li >
-    <a href="../user-guide/examples/potential_barrier/">Potential Barrier</a>
+    <a href="../potential_barrier/">Potential Barrier</a>
 </li>
 
         
             
 <li >
-    <a href="../user-guide/examples/1D_harmonic_trap/">1D trapped particle</a>
+    <a href="../1D_harmonic_trap/">1D trapped particle</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">2D trap with momentum transfer</a>
 </li>
 
         
             
 <li >
-    <a href="../user-guide/examples/2D_harmonic_trap/">2D trap with momentum transfer</a>
+    <a href="../Raman_transitions/">Stimulated Raman-transitions</a>
 </li>
 
         
             
 <li >
-    <a href="../user-guide/examples/Raman_transitions/">Stimulated Raman-transitions</a>
-</li>
-
-        
-            
-<li >
-    <a href="../user-guide/examples/BEC_scattering/">Bose-Einstein condensate collision</a>
+    <a href="../BEC_scattering/">Bose-Einstein condensate collision</a>
 </li>
 
         
@@ -151,7 +151,7 @@
                         
                             
 <li >
-    <a href="../about/license/">License</a>
+    <a href="../../../about/license/">License</a>
 </li>
 
                         
@@ -168,17 +168,17 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="..">
+                        <a rel="prev" href="../1D_harmonic_trap/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="../user-guide/generating_a_wave-function/">
+                        <a rel="next" href="../Raman_transitions/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/savowe/talises-doc/blob/master/docs/installation.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/savowe/talises-doc/blob/master/docs/user-guide/examples/2D_harmonic_trap.md"><i class="fab fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -190,80 +190,12 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#installing-talises">Installing TALISES</a></li>
-            <li class="second-level"><a href="#prerequisites">Prerequisites</a></li>
-                
-            <li class="second-level"><a href="#running-the-installation-script">Running the installation script</a></li>
-                
+        <li class="first-level active"><a href="#momentum-transfer-in-2d">Momentum transfer in 2D</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="installing-talises">Installing TALISES</h1>
-<hr />
-<p>TALISES uses the following libaries:</p>
-<ul>
-<li><a href="http://www.fftw.org/">FFTW</a> for Discrete-Fourier-Transforms</li>
-<li><a href="https://www.gnu.org/software/gsl/">GSL(CBLAS)</a> for numeric diagonalization and matrix exponentiation</li>
-<li><a href="https://beltoforion.de/article.php?a=muparser">muparser</a> for parsing of mathematical formulas</li>
-</ul>
-<p>You need this three libaries in order to use TALISES. If they are already installed on your machine, you only need the libary paths in your environment variables (e.g LD_LIBRARY_PATH) whilst you compile the program.<br />
-TALISES also comes with an installation script which is written in Common Lisp, that will download the required libaries, compile them and create <a href="https://modules.readthedocs.io/en/latest/">environment-module</a> files. The use of environment-modules is advised. </p>
-<h3 id="prerequisites">Prerequisites</h3>
-<p>Necessities are compilers (gcc, g++), build automation tools (make, cmake) and the <a href="https://www.boost.org/doc/libs/">Boost C++ Libraries</a>.
-You can install these with</p>
-<pre><code class="text">sudo apt install build-essential cmake libboost-all-dev
-</code></pre>
-
-<p>If you want to use the install script that comes with TALISES you need a Common Lisp compiler (we will use <a href="http://www.sbcl.org/">SBCL</a>) and environment-modules. They can be installed with</p>
-<pre><code class="text">sudo apt install sbcl curl environment-modules
-</code></pre>
-
-<p>After installation of environment-modules you may need to execute <code>add.modules</code> and reboot the system.</p>
-<h3 id="running-the-installation-script">Running the installation script</h3>
-<p>If you downloaded the git-repository and are within the directory, you can start the installation with</p>
-<pre><code class="text">sbcl --script install.lisp
-</code></pre>
-
-<p>The script will check for some dependencies e.g. compilers.
-If all tests pass you will be greeted by the installer.
-Here you have severall options to chose from.</p>
-<pre><code class="text">  _________    __    _________ ___________
- /_  __/   |  / /   /  _/ ___// ____/ ___/
-  / / / /| | / /    / / \__ \/ __/  \__ \ 
- / / / ___ |/ /____/ / ___/ / /___ ___/ / 
-/_/ /_/  |_/_____/___//____/_____//____/  
-
-Options:
--h, --help            Print this help text
---no-fetch            Skip Download
---no-modules          Skip Module file installation
---no-install          Skip Installation
--j THREADS            Number of make threads
---build-dir DIR       Build directory
---install-dir DIR     Installation directory
---module-dir DIR      Module directory
-
-What do you want to install?
-Press number of each package to be installed and then press ENTER:
-0 - gsl              (2.5)
-1 - muparser         (2.2.6.1)
-2 - fftw             (3.3.8)
-3 - talises          (git)
-a - all
-q - Abort Installation.
-</code></pre>
-
-<p>The build directory will contain the source files, the installation directory the compiled binaries and the module directory the module files which will allow you to quickly switch between different environments.<br />
-We recommend to install the libaries individually (first gsl, then muparser, etc.), so if something goes wrong you can easily identify the problems.<br />
-When GSL, muparser and FFTW are installed you need to make sure that your environment variables point to the libary directories. Otherwise TALISES can not be compiled. Type <code>module avail</code> to see a list of the environment files you have. If environment-modules can find the folder you saved the modulefiles in you should see</p>
-<pre><code class="text">----- /home/username/local/modules/modulefiles/ ------
-fftw-3.3.8       gsl-2.5          muparser-2.2.6.1
-</code></pre>
-
-<p>Then you can load those configuration files with <code>module load fftw-3.3.8 muparser-2.2.6.1 gsl-2.5</code> and check with <code>echo $LD_LIBRARY_PATH</code> whether the libaries' directories are in it.<br />
-Now you can install TALISES either via the installation script or by running <code>cmake .</code> followed by <code>make clean</code> and <code>make</code>.<br />
-If everything went right you will find the compiled binaries in the installation directory you set.</p></div>
+<h1 id="momentum-transfer-in-2d">Momentum transfer in 2D</h1></div>
         
         
     </div>
@@ -279,16 +211,16 @@ If everything went right you will find the compiled binaries in the installation
         
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
     
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     
-    <script>var base_url = ".."</script>
+    <script>var base_url = "../../.."</script>
     
-    <script src="../js/base.js"></script>
+    <script src="../../../js/base.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-    <script src="../search/main.js"></script>
+    <script src="../../../search/main.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

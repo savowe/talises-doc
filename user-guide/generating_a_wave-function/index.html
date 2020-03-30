@@ -108,13 +108,31 @@
         
             
 <li >
-    <a href="../examples/rabi_oscillations/">Rabi Oscillations</a>
+    <a href="../examples/potential_barrier/">Potential Barrier</a>
 </li>
 
         
             
 <li >
-    <a href="../examples/2D_momentum_transfer/">Momentum transfer in 2D</a>
+    <a href="../examples/1D_harmonic_trap/">1D trapped particle</a>
+</li>
+
+        
+            
+<li >
+    <a href="../examples/2D_harmonic_trap/">2D trap with momentum transfer</a>
+</li>
+
+        
+            
+<li >
+    <a href="../examples/Raman_transitions/">Stimulated Raman-transitions</a>
+</li>
+
+        
+            
+<li >
+    <a href="../examples/BEC_scattering/">Bose-Einstein condensate collision</a>
 </li>
 
         
@@ -202,7 +220,7 @@ In the next few sections we generate some exemplary wave-functions.</p>
 <li><code>&lt;XMIN&gt;</code> and <code>&lt;XMAX&gt;</code>: bounds of position basis.</li>
 </ul>
 <p>These tags are encapsulated in the <code>&lt;SIMULATION&gt;</code> parrent. A wave function of Gaussian appearance can be generated with</p>
-<pre><code>&lt;SIMULATION&gt;
+<pre><code class="xml">&lt;SIMULATION&gt;
   &lt;DIM&gt;1&lt;/DIM&gt;
   &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
   &lt;PSI_REAL_1D&gt;exp( -0.25*((x-x_0)/sigma_x)^2 )&lt;/PSI_REAL_1D&gt;
@@ -257,7 +275,7 @@ If you want to see this wave-function in action see our example for <a href="/us
 <p>Following the previous example it is very straightfoward to extend the XML file to generate a wave-function in two dimensions.
 This time we create a 2D Gaussian wave-function centered at \(x_0=-5\mu\text{m}\), \(y_0=0\) 
 and width \(\sigma_x=0.5\mu\text{m}\), \(\sigma_y = 2\mu\text{m}\).  </p>
-<pre><code>&lt;SIMULATION&gt;
+<pre><code class="xml">&lt;SIMULATION&gt;
   &lt;DIM&gt;2&lt;/DIM&gt; 
   &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
   &lt;PSI_REAL_2D&gt;exp( -0.25*((x-x_0)/sigma_x)^2 )*exp( -0.25*((y-y_0)/sigma_y)^2 )&lt;/PSI_REAL_2D&gt;

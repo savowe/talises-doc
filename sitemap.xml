@@ -1,35 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://sascha.vowe.eu/talises-doc/</loc>
-     <lastmod>2020-03-30</lastmod>
+     <lastmod>2020-03-31</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://sascha.vowe.eu/talises-doc/installation/</loc>
-     <lastmod>2020-03-30</lastmod>
+     <lastmod>2020-03-31</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://sascha.vowe.eu/talises-doc/user-guide/generating_a_wave-function/</loc>
-     <lastmod>2020-03-30</lastmod>
+     <lastmod>2020-03-31</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://sascha.vowe.eu/talises-doc/user-guide/handling_binary_data/</loc>
-     <lastmod>2020-03-30</lastmod>
+     <lastmod>2020-03-31</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://sascha.vowe.eu/talises-doc/user-guide/time-propagation/</loc>
-     <lastmod>2020-03-30</lastmod>
+     <lastmod>2020-03-31</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/rabi_oscillations/</loc>
-     <lastmod>2020-03-30</lastmod>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/potential_barrier/</loc>
+     <lastmod>2020-03-31</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/2D_momentum_transfer/</loc>
-     <lastmod>2020-03-30</lastmod>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/1D_harmonic_trap/</loc>
+     <lastmod>2020-03-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/2D_harmonic_trap/</loc>
+     <lastmod>2020-03-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/Raman_transitions/</loc>
+     <lastmod>2020-03-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/BEC_scattering/</loc>
+     <lastmod>2020-03-31</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://sascha.vowe.eu/talises-doc/about/license/</loc>
-     <lastmod>2020-03-30</lastmod>
+     <lastmod>2020-03-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
