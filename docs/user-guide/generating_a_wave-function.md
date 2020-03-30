@@ -19,7 +19,7 @@ The XML file needs to include the following tags
 - `<XMIN>` and `<XMAX>`: bounds of position basis.
 
 These tags are encapsulated in the `<SIMULATION>` parrent. A wave function of Gaussian appearance can be generated with
-```
+```xml
 <SIMULATION>
   <DIM>1</DIM>
   <FILENAME>0.000_1.bin</FILENAME>
@@ -78,7 +78,7 @@ If you want to see this wave-function in action see our example for [simulating 
 Following the previous example it is very straightfoward to extend the XML file to generate a wave-function in two dimensions.
 This time we create a 2D Gaussian wave-function centered at \\(x_0=-5\mu\text{m}\\), \\(y_0=0\\) 
 and width \\(\sigma_x=0.5\mu\text{m}\\), \\(\sigma_y = 2\mu\text{m}\\).  
-````
+```xml
 <SIMULATION>
   <DIM>2</DIM> 
   <FILENAME>0.000_1.bin</FILENAME>
@@ -98,7 +98,7 @@ and width \\(\sigma_x=0.5\mu\text{m}\\), \\(\sigma_y = 2\mu\text{m}\\).
     <YMIN>-10e-6</YMIN><YMAX>10e-6</YMAX>
     </ALGORITHM>
 </SIMULATION>
-````
+```
 If you plot the resulting binary file using the plotbin function you will see something like this  
 
 ![1D Gaussian wave-function plot](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/2D_gaussian.png)  
