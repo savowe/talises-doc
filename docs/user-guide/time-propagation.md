@@ -127,7 +127,7 @@ The time-propagation is defined by the following code
   </SEQUENCE>
 </SIMULATION>
 ```
-####__Step-by-step__:  
+####__Step-by-step__  
 
 ```xml
   <N_THREADS>4</N_THREADS>
@@ -164,7 +164,7 @@ We define one constant \\(f_R\\) which we can use later on in the description of
     V_22_real="0" V_22_imag="0"
     >1000</freeprop>
 ```
-The sequence starts with a \\(1000\, \mu \text{s}\\) long freeprop item. The time-steps are \\(2\, \mu \text{s}\\)long and the wave-function will be saved
+The sequence starts with a \\(1000\, \mu \text{s}\\) long freeprop item. The time-steps are \\(2\, \mu \text{s}\\) long and the wave-function will be saved
 every 20th step. The wave-packet freely propagates. Nothing special.
 
 ```xml

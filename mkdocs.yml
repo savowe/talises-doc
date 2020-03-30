@@ -13,8 +13,11 @@ nav:
     - Handling binary data: 'user-guide/handling_binary_data.md'
     - Propagate the wave-function: 'user-guide/time-propagation.md'
     - Examples:
-      - Rabi Oscillations: 'user-guide/examples/rabi_oscillations.md'
-      - Momentum transfer in 2D: 'user-guide/examples/2D_momentum_transfer.md'
+      - Potential Barrier: 'user-guide/examples/potential_barrier.md'
+      - 1D trapped particle: 'user-guide/examples/1D_harmonic_trap.md'
+      - 2D trap with momentum transfer: 'user-guide/examples/2D_harmonic_trap.md'
+      - Stimulated Raman-transitions: 'user-guide/examples/Raman_transitions.md'
+      - Bose-Einstein condensate collision: 'user-guide/examples/BEC_scattering.md'
   - About:
     - License: 'about/license.md'
 
