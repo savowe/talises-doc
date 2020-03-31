@@ -190,11 +190,115 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#bose-einstien-condensate-collision">Bose-Einstien condensate collision</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-</div>
+<h1 id="bose-einstien-condensate-collision">Bose-Einstien condensate collision</h1>
+<p><img alt="1D Rabi-oscillations figure" src="https://raw.githubusercontent.com/savowe/talises-doc/master/figs/BEC_collision.gif" />
+(You can find corresponding files in the <a href="https://github.com/savowe/talises/tree/master/examples/BEC_scattering">TALISES examples folder</a>)<br />
+The time-evolution of Bose-Einstein condensates (BECs) is under certain approximations well described by a nonlinear Schrödinger equation
+called the Gross-Pitaevskii equation
+$$
+i\frac{\partial}{\partial t} \Psi = -\frac{\hbar}{2m}\nabla^2 \Psi + \frac{1}{\hbar}V \Psi +  \frac{1}{\hbar} g |\Psi |^2 \Psi. <br />
+$$
+It is an effective single particle, nonlinear Schrödinger equation describing the collective behaviour of degenerate Bosons.
+The nonlinear term is accounting for interparticle scattering processes with strength \(g = \frac{4\pi \hbar^2 a}{m}\),
+where \(a\) is the s-scatter length.<br />
+This scatter length can be different for different particles and even internal states.
+We will simulate the collision of two BECs in different, orthogonal states.
+This could mean that the BECs are made of the same atoms but in different internal states, or even entirely different atomic species.<br />
+Since we will otherwise assume that \(V=0\), the Hamiltonian is
+$$
+H = -\frac{\hbar^2}{2m}\nabla^2 + 
+\begin{pmatrix}
+g_{11} |\Psi_1 |^2 + g_{12} |\Psi_2 |^2 &amp; 0\\
+0 &amp; g_{21} |\Psi_1 |^2 + g_{22} |\Psi_2 |^2
+\end{pmatrix}.
+$$</p>
+<p>In order make two BECs collide we give them an initial momentum in opposite direction.
+Furthermore we rotate the coordinate system a bit, so it looks cooler.<br />
+The first BEC is defined by</p>
+<pre><code>&lt;SIMULATION&gt;
+  &lt;DIM&gt;2&lt;/DIM&gt; 
+  &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
+  &lt;PSI_REAL_2D&gt;exp( -0.25*((cos(phi)*x+sin(phi)*y-x_0)/sigma_x)^2 )*exp( -0.25*((-sin(phi)*y+cos(phi)*x-y_0)/sigma_y)^2 )*cos(k*(cos(phi)*x+sin(phi)*y))&lt;/PSI_REAL_2D&gt;
+  &lt;PSI_IMAG_2D&gt;exp( -0.25*((cos(phi)*x+sin(phi)*y-x_0)/sigma_x)^2 )*exp( -0.25*((-sin(phi)*y+cos(phi)*x-y_0)/sigma_y)^2 )*sin(k*(cos(phi)*x+sin(phi)*y))&lt;/PSI_IMAG_2D&gt;
+  &lt;CONSTANTS&gt;
+    &lt;N&gt;1e5&lt;/N&gt;
+    &lt;phi&gt;0.78&lt;/phi&gt;
+    &lt;k&gt;5e6&lt;/k&gt;
+    &lt;x_0&gt;-10e-6&lt;/x_0&gt;
+    &lt;y_0&gt;0&lt;/y_0&gt;
+    &lt;sigma_x&gt;1e-6&lt;/sigma_x&gt;
+    &lt;sigma_y&gt;4e-6&lt;/sigma_y&gt;
+  &lt;/CONSTANTS&gt;
+   &lt;ALGORITHM&gt;
+    &lt;NX&gt;512&lt;/NX&gt;
+    &lt;NY&gt;512&lt;/NY&gt;
+    &lt;XMIN&gt;-20e-6&lt;/XMIN&gt;&lt;XMAX&gt;20e-6&lt;/XMAX&gt;
+    &lt;YMIN&gt;-20e-6&lt;/YMIN&gt;&lt;YMAX&gt;20e-6&lt;/YMAX&gt;
+    &lt;/ALGORITHM&gt;
+&lt;/SIMULATION&gt;
+</code></pre>
+
+<p>We offset it by \(-10\mu\text{m}\) in the x-direction and then rotate it by \(\phi = \pi / 4\).
+Note that it is normalized to \(\int \text{d}r |\Psi |^2 = N = 10^{5}\).
+We thus assume the BEC comprises of \(10^{5}\) atoms.<br />
+The second BEC is generated with</p>
+<pre><code>&lt;SIMULATION&gt;
+  &lt;DIM&gt;2&lt;/DIM&gt; 
+  &lt;FILENAME&gt;0.000_2.bin&lt;/FILENAME&gt;
+  &lt;PSI_REAL_2D&gt;exp( -0.25*((cos(phi)*x+sin(phi)*y-x_0)/sigma_x)^2 )*exp( -0.25*((-sin(phi)*y+cos(phi)*x-y_0)/sigma_y)^2 )*cos(k*(cos(phi)*x+sin(phi)*y))&lt;/PSI_REAL_2D&gt;
+  &lt;PSI_IMAG_2D&gt;exp( -0.25*((cos(phi)*x+sin(phi)*y-x_0)/sigma_x)^2 )*exp( -0.25*((-sin(phi)*y+cos(phi)*x-y_0)/sigma_y)^2 )*sin(k*(cos(phi)*x+sin(phi)*y))&lt;/PSI_IMAG_2D&gt;
+  &lt;CONSTANTS&gt;
+    &lt;N&gt;1e5&lt;/N&gt;
+    &lt;phi&gt;-2.35&lt;/phi&gt;
+    &lt;k&gt;5e6&lt;/k&gt;
+    &lt;x_0&gt;-10e-6&lt;/x_0&gt;
+    &lt;y_0&gt;0&lt;/y_0&gt;
+    &lt;sigma_x&gt;3e-6&lt;/sigma_x&gt;
+    &lt;sigma_y&gt;1e-6&lt;/sigma_y&gt;
+  &lt;/CONSTANTS&gt;
+   &lt;ALGORITHM&gt;
+    &lt;NX&gt;512&lt;/NX&gt;
+    &lt;NY&gt;512&lt;/NY&gt;
+    &lt;XMIN&gt;-20e-6&lt;/XMIN&gt;&lt;XMAX&gt;20e-6&lt;/XMAX&gt;
+    &lt;YMIN&gt;-20e-6&lt;/YMIN&gt;&lt;YMAX&gt;20e-6&lt;/YMAX&gt;
+    &lt;/ALGORITHM&gt;
+&lt;/SIMULATION&gt;
+</code></pre>
+
+<p>This one is also offset by \(-10\mu\text{m}\) in the x-direction but then rotated by \(\phi = -\frac{3\pi}{4}\).<br />
+The time-propagation xml reads</p>
+<pre><code>&lt;SIMULATION&gt;
+  &lt;N_THREADS&gt;4&lt;/N_THREADS&gt;
+  &lt;DIM&gt;2&lt;/DIM&gt;
+  &lt;INTERNAL_DIM&gt;2&lt;/INTERNAL_DIM&gt;
+  &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
+  &lt;FILENAME_2&gt;0.000_2.bin&lt;/FILENAME_2&gt;
+  &lt;CONSTANTS&gt;
+  &lt;g_11&gt;1e-14&lt;/g_11&gt;
+  &lt;g_12&gt;5e-12&lt;/g_12&gt;
+  &lt;g_21&gt;5e-12&lt;/g_21&gt;
+  &lt;g_22&gt;1e-14&lt;/g_22&gt;
+  &lt;/CONSTANTS&gt;
+    &lt;ALGORITHM&gt;
+      &lt;M&gt;1.44466899e-25&lt;/M&gt;
+      &lt;T_SCALE&gt;1e-6&lt;/T_SCALE&gt;
+   &lt;/ALGORITHM&gt;
+  &lt;SEQUENCE&gt;
+    &lt;freeprop Nk=&quot;50&quot; dt=&quot;2&quot; output_freq=&quot;packed&quot; pn_freq=&quot;none&quot;
+    V_11_real=&quot;g_11*(psi_1_real^2+psi_1_imag^2)+g_12*(psi_2_real^2+psi_2_imag^2)&quot; V_11_imag=&quot;0&quot; 
+    V_22_real=&quot;g_21*(psi_1_real^2+psi_1_imag^2)+g_22*(psi_2_real^2+psi_2_imag^2)&quot; V_22_imag=&quot;0&quot;
+    &gt;6000&lt;/freeprop&gt; 
+  &lt;/SEQUENCE&gt;
+&lt;/SIMULATION&gt;
+</code></pre>
+
+<p>Note that \(|\Psi|^2 = (\text{Re}\Psi)^2 + (\text{Im}\Psi)^2\). 
+We give the BEC an especially strong scattering strength accros internal states \(g_{12}=g_{21} &gt;&gt; g_{11} = g_{22}\).</p></div>
         
         
     </div>
