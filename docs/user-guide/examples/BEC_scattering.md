@@ -1,4 +1,5 @@
 # Bose-Einstien condensate collision
+![BEC scattering simulation](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/BEC_collision.gif)
 (You can find corresponding files in the [TALISES examples folder](https://github.com/savowe/talises/tree/master/examples/BEC_scattering))  
 The time-evolution of Bose-Einstein condensates (BECs) is under certain approximations well described by a nonlinear Schrödinger equation
 called the Gross-Pitaevskii equation
@@ -20,6 +21,8 @@ g_{11} |\Psi_1 |^2 + g_{12} |\Psi_2 |^2 & 0\\\\
 \end{pmatrix}.
 $$
 
+In order make two BECs collide we give them an initial momentum in opposite direction.
+Furthermore we rotate the coordinate system a bit, so it looks cooler.  
 The first BEC is defined by
 ```
 <SIMULATION>
@@ -98,4 +101,5 @@ The time-propagation xml reads
   </SEQUENCE>
 </SIMULATION>
 ```
-![1D Rabi-oscillations figure](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/BEC_collision.gif)
+Note that \\(|\Psi|^2 = (\text{Re}\Psi)^2 + (\text{Im}\Psi)^2\\). 
+We give the BEC an especially strong scattering strength accros internal states \\(g_{12}=g_{21} >> g_{11} = g_{22}\\).
