@@ -108,13 +108,13 @@
         
             
 <li >
-    <a href="../examples/potential_barrier/">Potential Barrier</a>
+    <a href="../examples/potential_barrier/">Potential barrier</a>
 </li>
 
         
             
 <li >
-    <a href="../examples/1D_harmonic_trap/">1D trapped particle</a>
+    <a href="../examples/1D_harmonic_trap/">Atom interferometry in 1D harmonic trap</a>
 </li>
 
         
@@ -202,7 +202,10 @@
         <div class="col-md-9" role="main">
 
 <h1 id="propagate-the-wave-function">Propagate the wave-function</h1>
-<p>The heart of TALISES lies in the ability to propagate a wave-function 
+<hr />
+<p><img alt="1D Rabi-oscillations figure" src="https://raw.githubusercontent.com/savowe/talises-doc/master/figs/1D_Rabi_oscillations.gif" /><br />
+(You can find corresponding files in the <a href="https://github.com/savowe/talises/tree/master/examples/Rabi_oscillations">TALISES examples folder</a>)<br />
+The heart of TALISES lies in the ability to propagate a wave-function 
 \( \hat{U} |\Psi(r,t_0)\rangle = |\Psi(r,t)\rangle\) in accordance to the Schrödinger equation
 <div>$$i\frac{\partial}{\partial t} |\Psi(r,t)\rangle 
 = \Big( -\frac{\hbar}{2m} \nabla^2 + \frac{1}{\hbar}\hat{V} (\Psi, r, t) \Big)  |\Psi(r,t)\rangle .$$</div>
@@ -383,7 +386,7 @@ V/\hbar = \frac{1}{2}
 2\pi f_R &amp; 0
 \end{pmatrix}
 $$
-The Rabi-Hamiltonian in Dirac-picture with Rabi-frequency \(\Omega_R=2\pi f_R = 2\pi \cdot 2.5 \,\text{kHz}\)</p>
+The Rabi-Hamiltonian in Dirac-picture with Rabi-frequency \(\Omega_R=2\pi f_R = 2\pi \cdot 2.5 \,\text{MHz}\)</p>
 <pre><code class="xml">    &lt;freeprop dt=&quot;2&quot; Nk=&quot;20&quot; output_freq=&quot;packed&quot; pn_freq=&quot;each&quot;
     V_11_real=&quot;0&quot; V_11_imag=&quot;0&quot;     
     V_22_real=&quot;0&quot; V_22_imag=&quot;0&quot;

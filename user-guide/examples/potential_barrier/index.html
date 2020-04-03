@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
     
-    <title>Potential Barrier - TALISES Documentation</title>
+    <title>Potential barrier - TALISES Documentation</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -108,13 +108,13 @@
         
             
 <li class="active">
-    <a href="./">Potential Barrier</a>
+    <a href="./">Potential barrier</a>
 </li>
 
         
             
 <li >
-    <a href="../1D_harmonic_trap/">1D trapped particle</a>
+    <a href="../1D_harmonic_trap/">Atom interferometry in 1D harmonic trap</a>
 </li>
 
         
@@ -190,11 +190,80 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#potential-barrier">Potential Barrier</a></li>
+            <li class="second-level"><a href="#box-potentials">Box potentials</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-</div>
+<h1 id="potential-barrier">Potential Barrier</h1>
+<hr />
+<p><img alt="Potential barrier simulation" src="https://raw.githubusercontent.com/savowe/talises-doc/master/figs/potential_barrier.gif" /><br />
+(You can find corresponding files in the <a href="https://github.com/savowe/talises/tree/master/examples/potential_barrier">TALISES examples folder</a>)<br />
+Even though one of TALISES' specialties lies in the simple incoorperation of mutiple internal degrees of freedom,
+you can also just time-propagate wave-functions with no internal structure.<br />
+As an example we will let a Gaussian wave-packet hit a potential-barrier that will be a box-potential in y-direction
+and a periodic box-potential in x-direction.</p>
+<h3 id="box-potentials">Box potentials</h3>
+<p>From the <a href="/user-guide/generating_a_wave-function/#build-in-functions">build-in functions that come with the muparser libary</a> we will use the sign function
+$$
+\text{sign}(x):={\begin{cases}-1&amp;{\text{if }}x&lt;0,\\0&amp;{\text{if }}x=0,\\1&amp;{\text{if }}x&gt;0.\end{cases}}
+$$
+to generate a box-potential.
+The sign function can be used to construct the Heaviside step function
+$$
+\theta (x) = \frac{1}{2}\Big(1+\text{sign}(x)\Big).
+$$
+and a box-function, which in terms of a Heaviside step function or sign function is
+$$
+\text{rect} (x) = \theta\Big(x-\frac{1}{2}\Big) \cdot \theta\Big(\frac{1}{2}-x\Big) = \theta\Big(x+\frac{1}{2}\Big) - \theta\Big(x-\frac{1}{2}\Big) \\
+\text{and} \\
+\text{rect} (x) = \frac{1}{2}\Big[ \text{sign}\Big(x+\frac{1}{2}\Big) -  \text{sign}\Big(x-\frac{1}{2}\Big) \Big].
+$$
+A periodic box function can be generated using the \(\text{rint}(x)\) function, which rounds a number to the nearest integer.
+If we supply it with a simple harmonic function as in \( \text{rint}((\sin k_B x)^2) \) (where \(k_B\) is a measure of periodicity),
+we will have a nice perdiodic box function.<br />
+Our potential is then
+$$
+V(x,y) = A 
+    \bigg[ 
+        \frac{1}{4} 
+        \bigg(
+            1+ \text{sign}(y-y_l)
+        \bigg)\cdot
+        \bigg(
+            1+ \text{sign}(y_u-y)
+        \bigg)\cdot
+        \text{rint}((\sin k_B x)^2)
+    \bigg],
+$$
+where \(y_l\) and \(y_u\) are the lower and upper bound of the potential-box.<br />
+The XML file giving the above time-propagation reads</p>
+<pre><code>&lt;SIMULATION&gt;
+  &lt;N_THREADS&gt;4&lt;/N_THREADS&gt;
+  &lt;DIM&gt;2&lt;/DIM&gt;
+  &lt;INTERNAL_DIM&gt;1&lt;/INTERNAL_DIM&gt;
+  &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
+  &lt;CONSTANTS&gt;
+    &lt;barrier_upper_ybound&gt;.1e-6&lt;/barrier_upper_ybound&gt;
+    &lt;barrier_lower_ybound&gt;-.1e-6&lt;/barrier_lower_ybound&gt;
+    &lt;barrier_Amp&gt;1e5&lt;/barrier_Amp&gt;
+    &lt;kx_barrier&gt;2e6&lt;/kx_barrier&gt;
+  &lt;/CONSTANTS&gt;
+  &lt;ALGORITHM&gt;
+    &lt;M&gt;1.44466899e-25&lt;/M&gt;
+    &lt;T_SCALE&gt;1e-6&lt;/T_SCALE&gt;
+  &lt;/ALGORITHM&gt;
+  &lt;SEQUENCE&gt;
+    &lt;freeprop Nk=&quot;25&quot; dt=&quot;2&quot; output_freq=&quot;packed&quot; pn_freq=&quot;none&quot;
+    V_11_real=&quot;(1/2*(1+sign(y-barrier_lower_ybound))*1/2*(1+sign(-y+barrier_upper_ybound)) 
+    * rint(sin(kx_barrier*x)^2))*barrier_Amp&quot; 
+    V_11_imag=&quot;0&quot;
+    &gt;4000&lt;/freeprop&gt; 
+  &lt;/SEQUENCE&gt;
+&lt;/SIMULATION&gt;
+</code></pre></div>
         
         
     </div>

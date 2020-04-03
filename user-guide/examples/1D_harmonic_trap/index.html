@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
     
-    <title>1D trapped particle - TALISES Documentation</title>
+    <title>Atom interferometry in 1D harmonic trap - TALISES Documentation</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -108,13 +108,13 @@
         
             
 <li >
-    <a href="../potential_barrier/">Potential Barrier</a>
+    <a href="../potential_barrier/">Potential barrier</a>
 </li>
 
         
             
 <li class="active">
-    <a href="./">1D trapped particle</a>
+    <a href="./">Atom interferometry in 1D harmonic trap</a>
 </li>
 
         
@@ -190,12 +190,81 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#rabi-oscillations">Rabi Oscillations</a></li>
+        <li class="first-level active"><a href="#atom-interferometry-in-1d-harmonic-trap">Atom interferometry in 1D harmonic trap</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="rabi-oscillations">Rabi Oscillations</h1></div>
+<h1 id="atom-interferometry-in-1d-harmonic-trap">Atom interferometry in 1D harmonic trap</h1>
+<hr />
+<p><img alt="Potential barrier simulation" src="https://raw.githubusercontent.com/savowe/talises-doc/master/figs/1D_trap_AI.gif" /><br />
+(You can find corresponding files in the <a href="https://github.com/savowe/talises/tree/master/examples/1D_harmonic_trap">TALISES examples folder</a>)<br />
+In this example we put a Gaussian wave-packet into a superposition of two internal states and switch on an harmonic potential.
+As a twist we make the excited state twice as susceptible to the harmonic potential. After some time we recombine the wave-packets.<br />
+We start an interact sequence with
+$$
+V/\hbar = \frac{1}{2}
+\begin{pmatrix}
+0 &amp; \Omega_R\\
+\Omega_R &amp; 0
+\end{pmatrix}
+= 
+ \frac{1}{2}
+ \begin{pmatrix}
+0 &amp; 2\pi f_R\\
+2\pi f_R &amp; 0
+\end{pmatrix},
+$$
+the Rabi-Hamiltonian in Dirac-picture with Rabi-frequency \(\Omega_R=2\pi f_R = 2\pi \cdot 2.5 \,\text{MHz}\).
+This means after \(400\, \mu \text{s}\) a full Rabi-cycle is achieved. Since we aim for a \(\frac{\pi}{2}\)-pulse,
+the sequence will be \(100\, \mu \text{s}\) long.<br />
+After achieving the equal superposition we subject both internal states to an harmonic potential, 
+where one state is trapped by \( \omega_1 = 2\pi f_1 \) and the other by \( \omega_2 = 2\pi f_2 \):
+$$
+V/\hbar = 
+\begin{pmatrix}
+\frac{m}{2\hbar} \Big( 2\pi f_1 x \Big)^2 &amp; 0\\
+0 &amp; \frac{m}{2\hbar} \Big( 2\pi f_2 x \Big)^2
+\end{pmatrix}
+$$
+We chose the trapping frequencies to be \(f_1 = 100 \,\text{Hz} \) and \(f_2 = 2f_1 = 200 \,\text{Hz} \).
+After \(10\, \text{ms}\) of propagation time the first internal state will have made a complete evolution whilst the second
+will be finishing its second.<br />
+We reombine them with the same interact sequence that was used to generate the superposition.
+The XML-file that generates the above seen simulation reads:</p>
+<pre><code class="XML">&lt;SIMULATION&gt;
+  &lt;N_THREADS&gt;4&lt;/N_THREADS&gt;
+  &lt;DIM&gt;1&lt;/DIM&gt;
+  &lt;INTERNAL_DIM&gt;2&lt;/INTERNAL_DIM&gt;
+  &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
+  &lt;FILENAME_2&gt;0.000_2.bin&lt;/FILENAME_2&gt;
+  &lt;ALGORITHM&gt;
+    &lt;T_SCALE&gt;1e-6&lt;/T_SCALE&gt;
+    &lt;M&gt;1.44466899e-25&lt;/M&gt;
+  &lt;/ALGORITHM&gt;
+  &lt;CONSTANTS&gt;
+    &lt;f_R&gt;2500&lt;/f_R&gt;
+    &lt;m&gt;1.44466899e-25&lt;/m&gt;
+    &lt;hbar&gt;1.054571817e-34&lt;/hbar&gt;
+    &lt;f_HO_1&gt;1e2&lt;/f_HO_1&gt;
+    &lt;f_HO_2&gt;2e2&lt;/f_HO_2&gt;
+  &lt;/CONSTANTS&gt;
+  &lt;SEQUENCE&gt;
+    &lt;interact  dt=&quot;0.02&quot; Nk=&quot;250&quot; output_freq=&quot;packed&quot; pn_freq=&quot;each&quot;
+      V_11_real=&quot;0&quot; V_11_imag=&quot;0&quot; V_12_real=&quot;2*pi*f_R/2&quot; V_12_imag=&quot;0&quot;
+                                  V_22_real=&quot;0&quot; V_22_imag=&quot;0&quot;
+    &gt;100&lt;/interact&gt;
+  &lt;freeprop dt=&quot;2&quot; Nk=&quot;50&quot; output_freq=&quot;packed&quot; pn_freq=&quot;none&quot;
+    V_11_real=&quot;m/2/hbar*4*pi^2*f_HO_1^2*x^2&quot; V_11_imag=&quot;0&quot;  
+    V_22_real=&quot;m/2/hbar*4*pi^2*f_HO_2^2*x^2&quot; V_22_imag=&quot;0&quot;
+    &gt;10000&lt;/freeprop&gt;
+    &lt;interact dt=&quot;0.02&quot; Nk=&quot;250&quot; output_freq=&quot;packed&quot; pn_freq=&quot;each&quot;
+      V_11_real=&quot;0&quot; V_11_imag=&quot;0&quot; V_12_real=&quot;2*pi*f_R/2&quot; V_12_imag=&quot;0&quot;
+                                  V_22_real=&quot;0&quot; V_22_imag=&quot;0&quot;
+    &gt;100&lt;/interact&gt;
+  &lt;/SEQUENCE&gt;
+&lt;/SIMULATION&gt;
+</code></pre></div>
         
         
     </div>
