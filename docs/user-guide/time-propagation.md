@@ -1,5 +1,7 @@
 # Propagate the wave-function
 -----------------
+![1D Rabi-oscillations figure](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/1D_Rabi_oscillations.gif)  
+(You can find corresponding files in the [TALISES examples folder](https://github.com/savowe/talises/tree/master/examples/Rabi_oscillations))  
 The heart of TALISES lies in the ability to propagate a wave-function 
 \\( \hat{U} |\Psi(r,t_0)\rangle = |\Psi(r,t)\rangle\\) in accordance to the Schrödinger equation
 <div>$$i\frac{\partial}{\partial t} |\Psi(r,t)\rangle 
@@ -188,7 +190,7 @@ V/\hbar = \frac{1}{2}
 2\pi f_R & 0
 \end{pmatrix}
 $$
-The Rabi-Hamiltonian in Dirac-picture with Rabi-frequency \\(\Omega_R=2\pi f_R = 2\pi \cdot 2.5 \,\text{kHz}\\)
+The Rabi-Hamiltonian in Dirac-picture with Rabi-frequency \\(\Omega_R=2\pi f_R = 2\pi \cdot 2.5 \,\text{MHz}\\)
 
 ```xml
     <freeprop dt="2" Nk="20" output_freq="packed" pn_freq="each"
