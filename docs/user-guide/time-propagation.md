@@ -1,4 +1,5 @@
 # Propagate the wave-function
+-----------------
 The heart of TALISES lies in the ability to propagate a wave-function 
 \\( \hat{U} |\Psi(r,t_0)\rangle = |\Psi(r,t)\rangle\\) in accordance to the Schrödinger equation
 <div>$$i\frac{\partial}{\partial t} |\Psi(r,t)\rangle 

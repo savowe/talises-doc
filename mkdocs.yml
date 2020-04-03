@@ -14,7 +14,7 @@ nav:
     - Propagate the wave-function: 'user-guide/time-propagation.md'
     - Examples:
       - Potential Barrier: 'user-guide/examples/potential_barrier.md'
-      - 1D trapped particle: 'user-guide/examples/1D_harmonic_trap.md'
+      - Atom interferometry in 1D harmonic trap: 'user-guide/examples/1D_harmonic_trap.md'
       - 2D trap with momentum transfer: 'user-guide/examples/2D_harmonic_trap.md'
       - Stimulated Raman-transitions: 'user-guide/examples/Raman_transitions.md'
       - Bose-Einstein condensate collision: 'user-guide/examples/BEC_scattering.md'

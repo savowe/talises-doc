@@ -1,5 +1,5 @@
 # TALISES Documentation
-
+-----------------
 [TALISES](https://github.com/savowe/talises) (This Ain't a LInear Schrödinger Equation Solver) is an easy-to-use C++ implementation of the Split-Step Fourier Method, for numeric calculation of a wave function's time-propagation under the Schrödinger equation.
 It's code is based on the [ATUS-2 package](https://github.com/GPNUM/atus2) programm developed at ZARM (Center of Applied Space Technology and Microgravity, University of Bremen).
 ### Features

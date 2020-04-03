@@ -1,1 +1,1 @@
-# Rabi Oscillations
+# Atom interferometry in 1D harmonic trap 

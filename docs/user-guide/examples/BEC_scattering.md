@@ -1,4 +1,4 @@
-# Bose-Einstien condensate collision
+# Bose-Einstein condensate collision
 ![BEC scattering simulation](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/BEC_collision.gif)
 (You can find corresponding files in the [TALISES examples folder](https://github.com/savowe/talises/tree/master/examples/BEC_scattering))  
 The time-evolution of Bose-Einstein condensates (BECs) is under certain approximations well described by a nonlinear Schrödinger equation

@@ -1,4 +1,5 @@
 # Handling binary data
+-----------------
 The wave-functions used by TALISES are saved as binary data files.
 The binaries do not only contain information of the wave-function amplitudes at every grid point,
 but also contextual information like the time, position space size, sampling rate and more.  
