@@ -53,10 +53,10 @@ The XML file giving the above time-propagation reads
     <barrier_Amp>1e5</barrier_Amp>
     <kx_barrier>2e6</kx_barrier>
   </CONSTANTS>
-    <ALGORITHM>
-      <M>1.44466899e-25</M>
-      <T_SCALE>1e-6</T_SCALE>
-   </ALGORITHM>
+  <ALGORITHM>
+    <M>1.44466899e-25</M>
+    <T_SCALE>1e-6</T_SCALE>
+  </ALGORITHM>
   <SEQUENCE>
     <freeprop Nk="25" dt="2" output_freq="packed" pn_freq="none"
     V_11_real="(1/2*(1+sign(y-barrier_lower_ybound))*1/2*(1+sign(-y+barrier_upper_ybound)) 
