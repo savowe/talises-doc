@@ -69,3 +69,6 @@ The XML-file that generates the above seen simulation reads:
   </SEQUENCE>
 </SIMULATION>
 ```
+#### Note:
+The mass defined in the potential term has to be given a value in the `<CONSTANTS>` tag.
+The mass you provide the program in the `<ALOGRITHM>` tag is only for computing the kinetic part of the Schrödinger equation and will not be considered as a constant in the sequence items.
