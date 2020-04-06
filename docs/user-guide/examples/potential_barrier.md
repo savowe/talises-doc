@@ -7,7 +7,7 @@ you can also just time-propagate wave-functions with no internal structure.
 As an example we will let a Gaussian wave-packet hit a potential-barrier that will be a box-potential in y-direction
 and a periodic box-potential in x-direction.
 ### Box potentials
-From the [build-in functions that come with the muparser libary](/user-guide/generating_a_wave-function/#build-in-functions) we will use the sign function
+From the [build-in functions that come with the muparser libary](https://beltoforion.de/article.php?a=muparser&p=features) we will use the sign function
 $$
 \text{sign}(x):={\begin{cases}-1&{\text{if }}x<0,\\\\0&{\text{if }}x=0,\\\\1&{\text{if }}x>0.\end{cases}}
 $$

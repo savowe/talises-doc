@@ -3,6 +3,7 @@ site_url: https://sascha.vowe.eu/talises-doc/
 repo_url: https://github.com/savowe/talises-doc/
 edit_uri: blob/master/docs/
 site_author: Sascha Vowe
+copyright: Sascha Vowe
 markdown_extensions:
     - toc:
         toc_depth: 3

@@ -8,8 +8,8 @@
 - speed of C++, the FFTW and GSL libaries and multithreading
 
 #### Have a look at some exemplary simulations
--   [Potential barrier](/user-guide/examples/potential_barrier)
--   [Atom interferometry in 1D harmonic trap](/user-guide/examples/1D_harmonic_trap)
--   [Momentum transfer in 2D harmonic trap](/user-guide/examples/2D_harmonic_trap)
--   [Stimulated Raman transitions](/user-guide/examples/Raman_transitions)
--   [Bose-Einstein condensate collision](/user-guide/examples/BEC_scattering)
+-   [Potential barrier](./user-guide/examples/potential_barrier)
+-   [Atom interferometry in 1D harmonic trap](./user-guide/examples/1D_harmonic_trap)
+-   [Momentum transfer in 2D harmonic trap](./user-guide/examples/2D_harmonic_trap)
+-   [Stimulated Raman transitions](./user-guide/examples/Raman_transitions)
+-   [Bose-Einstein condensate collision](./user-guide/examples/BEC_scattering)

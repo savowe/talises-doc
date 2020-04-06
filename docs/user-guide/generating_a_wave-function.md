@@ -60,7 +60,7 @@ You can install it via the python package manager using
 ```text
 pip install talisestools
 ```
-(More details on the package's funcionallity is described in [Handling binary data](/user-guide/handling_binary_data/#the-talisestools-package))  
+(More details on the package's funcionallity is described in [Handling binary data](./user-guide/handling_binary_data/))  
 We can have a look at the wave-function by using talisestools' plotbin function in python 
 ```python
 import talisestools as tt
