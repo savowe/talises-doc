@@ -110,7 +110,7 @@ will give you
 
 ![1D Gaussian wave-function plot](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/arbitrary_wave_function.png)  
 
-### Build-in functions
+### Built-in functions
 
 The muparser libary allows for following functions  
 
