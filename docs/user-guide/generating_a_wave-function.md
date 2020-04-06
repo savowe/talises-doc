@@ -71,7 +71,6 @@ This will create a .png file which should look like this
 ![1D Gaussian wave-function plot](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/1D_gaussian.png)
 
 Naturally, TALISES uses SI units for all computations.  
-If you want to see this wave-function in action see our example for [simulating Rabi oscillations](/user-guide/examples/rabi_oscillations/) which uses this wave-function and transfers it into a second internal state with a oscillatory time-dependent potential.
 
 ------------------
 ### Generating a 2D wave-function
@@ -102,8 +101,6 @@ and width \\(\sigma_x=0.5\mu\text{m}\\), \\(\sigma_y = 2\mu\text{m}\\).
 If you plot the resulting binary file using the plotbin function you will see something like this  
 
 ![1D Gaussian wave-function plot](https://raw.githubusercontent.com/savowe/talises-doc/master/figs/2D_gaussian.png)  
-
-In our example [Momentum transfer in 2D](/user-guide/examples/rabi_oscillations/) you can learn how to use oscillatory time and position dependent potentials (aka light) to move this wave packet into the upper right corner.  
 
 You can be much more creative with you wave-functions, for example
 ```

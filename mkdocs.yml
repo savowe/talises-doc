@@ -3,8 +3,7 @@ site_url: https://sascha.vowe.eu/talises-doc/
 repo_url: https://github.com/savowe/talises-doc/
 edit_uri: blob/master/docs/
 site_author: Sascha Vowe
-markdown_extensions:
-  - toc
+
 nav:
   - Home: 'index.md'
   - Installation: 'installation.md'
@@ -28,3 +27,6 @@ theme:
   custom_dir: cinder
   highlightjs: true
   colorscheme: github
+  toc_depth: 1
+extra:
+  toc_depth: 1
