@@ -3,6 +3,16 @@ site_url: https://sascha.vowe.eu/talises-doc/
 repo_url: https://github.com/savowe/talises-doc/
 edit_uri: blob/master/docs/
 site_author: Sascha Vowe
+markdown_extensions:
+    - toc:
+        toc_depth: 3
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
+theme:
+  name: null
+  custom_dir: cinder
+  highlightjs: true
+  colorscheme: github
 
 nav:
   - Home: 'index.md'
@@ -19,14 +29,3 @@ nav:
     - Bose-Einstein condensate collision: 'user-guide/examples/BEC_scattering.md'
   - About:
     - License: 'about/license.md'
-
-extra_javascript:
-  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
-theme:
-  name: null
-  custom_dir: cinder
-  highlightjs: true
-  colorscheme: github
-  toc_depth: 1
-extra:
-  toc_depth: 1

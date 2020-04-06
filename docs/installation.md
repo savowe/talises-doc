@@ -1,6 +1,6 @@
 # Installing TALISES
 -------------
-TALISES can be downloaded from source on [GitHub](https://github.com/savowe/talises) or by directly cloning it via
+TALISES source files can be obtained on [GitHub](https://github.com/savowe/talises) either by downloading it there or by directly cloning it with
 ```
 git clone https://github.com/savowe/talises.git
 ```
