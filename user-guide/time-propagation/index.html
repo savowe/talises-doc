@@ -195,6 +195,8 @@
                 
             <li class="second-level"><a href="#example">Example</a></li>
                 
+                <li class="third-level"><a href="#step-by-step-examination">Step-by-step examination</a></li>
+                <li class="third-level"><a href="#plotting-the-result">Plotting the result</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -341,7 +343,7 @@ gen_psi_0 zero.xml
 <pre><code class="bash">talises timeprop.xml
 </code></pre>
 
-<h4><strong>Step-by-step examination</strong></h4>
+<h4 id="step-by-step-examination"><strong>Step-by-step examination</strong></h4>
 <p>We go through <code>timeprop.xml</code> line by line:</p>
 <pre><code class="xml">  &lt;N_THREADS&gt;4&lt;/N_THREADS&gt;
   &lt;DIM&gt;1&lt;/DIM&gt;
@@ -410,7 +412,7 @@ The Rabi-Hamiltonian in Dirac-picture and Rabi-frequency \(\Omega_R=2\pi f_R = 2
 </code></pre>
 
 <p>After some Rabi-cycles we let the wave-packets freely expand again.  </p>
-<h4>Plotting the result</h4>
+<h4 id="plotting-the-result">Plotting the result</h4>
 <p>Start python, load talisestools und use the <a href="/user-guide/handling_binary_data/#the-talisestools-package">readall function</a> to extract the data from the binaries.</p>
 <pre><code class="python">import talisestools as tt 
 ## Load binary data
@@ -481,8 +483,6 @@ gif.save(frames, &quot;eval.gif&quot;, duration=100)
         
         <hr>
         <p>
-        <small>Sascha Vowe</small><br>
-        
         <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
         </p>
 
