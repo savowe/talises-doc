@@ -24,11 +24,11 @@ $$
 V(x,y,t)/\hbar 
 = 
  \begin{pmatrix}
-\frac{m}{2\hbar} \big( 2\pi f \big)^2 \big(x+y\big)^2 & 0\\\\
-0 & \frac{m}{2\hbar} \big( 2\pi f \big)^2 (x+y)^2
+\frac{m}{2\hbar} \Big(\big( 2\pi f_x x \big)^2 +\big( 2\pi f_y y \big)^2 \Big) & 0\\\\
+0 & \frac{m}{2\hbar} \Big(\big( 2\pi f_x x \big)^2 +\big( 2\pi f_y y \big)^2 \Big)
 \end{pmatrix},
 $$
-and let the wave-packets freely evolve for two evolutions. 
+and let the wave-packets freely evolve for two evolutions, where we set \\(f_x = 100\,\text{Hz} \\) and \\(f_y = 200\,\text{Hz} \\).
 After this, we recombine both wave-packets with a sequence similar to the initial one, only that the light-field has an additional phase of \\(\pi\\), so that the probability amplitude completely transfers into the ground state again.  
 The XML-file reads
 ```XML
@@ -42,7 +42,8 @@ The XML-file reads
     <m>1.44466899e-25</m>
     <hbar>1.054571817e-34</hbar>
     <f_R>5e3</f_R>
-    <f_HO>100</f_HO>
+    <f_HO_x>100</f_HO_x>
+    <f_HO_y>200</f_HO_y>
     <k>6e6</k>
   </CONSTANTS>
     <ALGORITHM>
@@ -56,8 +57,8 @@ The XML-file reads
         V_22_real="-hbar*k^2/2/m" V_22_imag="0"
     >50</interact>
     <freeprop Nk="100" dt="2" output_freq="packed" pn_freq="none"
-        V_11_real="m/hbar/2*(2*pi*f_HO)^2*(x^2+y^2)" V_11_imag="0" 
-        V_22_real="m/hbar/2*(2*pi*f_HO)^2*(x^2+y^2)" V_22_imag="0"
+        V_11_real="m/hbar/2*((2*pi*f_HO_x*x)^2+(2*pi*f_HO_y*y)^2)" V_11_imag="0" 
+        V_22_real="m/hbar/2*((2*pi*f_HO_x*x)^2+(2*pi*f_HO_y*y)^2)" V_22_imag="0"
     >20000</freeprop> 
     <interact Nk="25" dt="0.2" output_freq="packed" pn_freq="each"
         V_11_real="0" V_11_imag="0" 			
