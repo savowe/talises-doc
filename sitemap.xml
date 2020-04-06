@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
-     <loc>https://sascha.vowe.eu/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/installation/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/installation/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/user-guide/generating_a_wave-function/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/generating_a_wave-function/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/user-guide/handling_binary_data/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/handling_binary_data/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/user-guide/time-propagation/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/time-propagation/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/user-guide/examples/potential_barrier/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/potential_barrier/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/user-guide/examples/1D_harmonic_trap/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/1D_harmonic_trap/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/user-guide/examples/2D_harmonic_trap/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/2D_harmonic_trap/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/user-guide/examples/Raman_transitions/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/Raman_transitions/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/user-guide/examples/BEC_scattering/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/user-guide/examples/BEC_scattering/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://sascha.vowe.eu/about/license/</loc>
+     <loc>https://sascha.vowe.eu/talises-doc/about/license/</loc>
      <lastmod>2020-04-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
