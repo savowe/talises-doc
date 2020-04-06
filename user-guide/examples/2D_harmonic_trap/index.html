@@ -79,7 +79,7 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -101,43 +101,43 @@
 </li>
 
                         
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Examples <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
                             
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Examples</a>
-    <ul class="dropdown-menu">
-        
-            
 <li >
     <a href="../potential_barrier/">Potential barrier</a>
 </li>
 
-        
-            
+                        
+                            
 <li >
     <a href="../1D_harmonic_trap/">Atom interferometry in 1D harmonic trap</a>
 </li>
 
-        
-            
+                        
+                            
 <li class="active">
     <a href="./">Momentum transfer in 2D harmonic trap</a>
 </li>
 
-        
-            
+                        
+                            
 <li >
-    <a href="../Raman_transitions/">Stimulated Raman-transitions</a>
+    <a href="../Raman_transitions/">Stimulated Raman transitions</a>
 </li>
 
-        
-            
+                        
+                            
 <li >
     <a href="../BEC_scattering/">Bose-Einstein condensate collision</a>
 </li>
-
-        
-    </ul>
-  </li>
 
                         
                         </ul>
@@ -221,11 +221,11 @@ $$
 V(x,y,t)/\hbar 
 = 
  \begin{pmatrix}
-\frac{m}{2\hbar} \big( 2\pi f \big)^2 \big(x+y\big)^2 &amp; 0\\
-0 &amp; \frac{m}{2\hbar} \big( 2\pi f \big)^2 (x+y)^2
+\frac{m}{2\hbar} \Big(\big( 2\pi f_x x \big)^2 +\big( 2\pi f_y y \big)^2 \Big) &amp; 0\\
+0 &amp; \frac{m}{2\hbar} \Big(\big( 2\pi f_x x \big)^2 +\big( 2\pi f_y y \big)^2 \Big)
 \end{pmatrix},
 $$
-and let the wave-packets freely evolve for two evolutions. 
+and let the wave-packets freely evolve for two evolutions, where we set \(f_x = 100\,\text{Hz} \) and \(f_y = 200\,\text{Hz} \).
 After this, we recombine both wave-packets with a sequence similar to the initial one, only that the light-field has an additional phase of \(\pi\), so that the probability amplitude completely transfers into the ground state again.<br />
 The XML-file reads</p>
 <pre><code class="XML">&lt;SIMULATION&gt;
@@ -238,7 +238,8 @@ The XML-file reads</p>
     &lt;m&gt;1.44466899e-25&lt;/m&gt;
     &lt;hbar&gt;1.054571817e-34&lt;/hbar&gt;
     &lt;f_R&gt;5e3&lt;/f_R&gt;
-    &lt;f_HO&gt;100&lt;/f_HO&gt;
+    &lt;f_HO_x&gt;100&lt;/f_HO_x&gt;
+    &lt;f_HO_y&gt;200&lt;/f_HO_y&gt;
     &lt;k&gt;6e6&lt;/k&gt;
   &lt;/CONSTANTS&gt;
     &lt;ALGORITHM&gt;
@@ -252,8 +253,8 @@ The XML-file reads</p>
         V_22_real=&quot;-hbar*k^2/2/m&quot; V_22_imag=&quot;0&quot;
     &gt;50&lt;/interact&gt;
     &lt;freeprop Nk=&quot;100&quot; dt=&quot;2&quot; output_freq=&quot;packed&quot; pn_freq=&quot;none&quot;
-        V_11_real=&quot;m/hbar/2*(2*pi*f_HO)^2*(x^2+y^2)&quot; V_11_imag=&quot;0&quot; 
-        V_22_real=&quot;m/hbar/2*(2*pi*f_HO)^2*(x^2+y^2)&quot; V_22_imag=&quot;0&quot;
+        V_11_real=&quot;m/hbar/2*((2*pi*f_HO_x*x)^2+(2*pi*f_HO_y*y)^2)&quot; V_11_imag=&quot;0&quot; 
+        V_22_real=&quot;m/hbar/2*((2*pi*f_HO_x*x)^2+(2*pi*f_HO_y*y)^2)&quot; V_22_imag=&quot;0&quot;
     &gt;20000&lt;/freeprop&gt; 
     &lt;interact Nk=&quot;25&quot; dt=&quot;0.2&quot; output_freq=&quot;packed&quot; pn_freq=&quot;each&quot;
         V_11_real=&quot;0&quot; V_11_imag=&quot;0&quot;             

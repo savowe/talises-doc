@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
     
-    <title>Stimulated Raman-transitions - TALISES Documentation</title>
+    <title>Stimulated Raman transitions - TALISES Documentation</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -79,7 +79,7 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -101,43 +101,43 @@
 </li>
 
                         
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Examples <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
                             
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Examples</a>
-    <ul class="dropdown-menu">
-        
-            
 <li >
     <a href="../potential_barrier/">Potential barrier</a>
 </li>
 
-        
-            
+                        
+                            
 <li >
     <a href="../1D_harmonic_trap/">Atom interferometry in 1D harmonic trap</a>
 </li>
 
-        
-            
+                        
+                            
 <li >
     <a href="../2D_harmonic_trap/">Momentum transfer in 2D harmonic trap</a>
 </li>
 
-        
-            
+                        
+                            
 <li class="active">
-    <a href="./">Stimulated Raman-transitions</a>
+    <a href="./">Stimulated Raman transitions</a>
 </li>
 
-        
-            
+                        
+                            
 <li >
     <a href="../BEC_scattering/">Bose-Einstein condensate collision</a>
 </li>
-
-        
-    </ul>
-  </li>
 
                         
                         </ul>
@@ -190,11 +190,80 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#stimulated-raman-transitions">Stimulated Raman transitions</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-</div>
+<h1 id="stimulated-raman-transitions">Stimulated Raman transitions</h1>
+<hr />
+<p><img src="https://raw.githubusercontent.com/savowe/talises-doc/master/figs/stimulated_Raman_population.png" alt="population over time" width="600"/>  </p>
+<p>(You can find corresponding files in the <a href="https://github.com/savowe/talises/tree/master/examples/Raman_transition">TALISES examples folder</a>)<br />
+In this example we simulate a three-level system undergoing stimulated two-photon transition across an intermediate state that will only be sparsely populated during the process.
+The three levels comprise of a ground, excited and intermediate state \( |g\rangle,|e\rangle,|i\rangle \).<br />
+Furthermore, we have two laser as time-periodic potentials \(\omega_\mathrm{S}, \omega_\mathrm{P}\). 
+A coupling exists only between \(  |g\rangle \leftrightarrow |i\rangle \leftrightarrow |e\rangle \), but not \(|g\rangle \nleftrightarrow |e\rangle\).<br />
+The potential part of the Hamiltonian is 
+$$
+V(t)/\hbar =
+\displaystyle \left[\begin{matrix} \omega_{g} &amp; 0 &amp; \frac{\Omega_{gi}  e^{i \omega_{P} t}}{2}\\
+0 &amp;  \omega_{e} &amp; \frac{\Omega_{ei}  e^{i \omega_{S} t}}{2}\\
+\frac{\Omega_{gi}  e^{- i \omega_{P} t}}{2} &amp; \frac{\Omega_{ei}  e^{- i \omega_{S} t}}{2} &amp;  \omega_{i}\end{matrix}\right]
+$$
+A sketch of this level system looks like this  </p>
+<p><img src="https://raw.githubusercontent.com/savowe/talises-doc/master/figs/Raman_three_level.png" alt="three level Raman sketch" width="400"/><br />
+where we additionally defined 
+\(\omega_i-\omega_\mathrm{P}-\omega_g=\Delta\)
+and
+\(\omega_\mathrm{P}-\omega_\mathrm{S}-\omega_e+\omega_g = \delta\).
+Usually \(\Delta\) is called the one-photon detuning, and \(\delta\) the two-photon detuning.
+One can transform the above stated potential to a time-independent form
+$$
+V(t)/\hbar =
+\displaystyle \left[\begin{matrix} 
+0 &amp; 0 &amp; \frac{\Omega_{gi} }{2}\\
+0 &amp;  \delta &amp; \frac{\Omega_{ei} }{2}\\
+\frac{\Omega_{gi} }{2} &amp; \frac{\Omega_{ei} }{2} &amp; \Delta\end{matrix}\right]
+$$
+which is much better to simulate in terms of computational demand.<br />
+For our simulation we take \(\Omega_{gi} = \Omega_{ei} = 100\, \text{kHz}/2\pi\) and \(\Delta=1 \,\text{MHz}/2\pi \).
+From analytical results one can calculate that the generalized Rabi frequency between excited and ground state is 
+\( \tilde{\Omega}_R = \frac{1}{4\Delta}\Omega_{gi}\Omega_{ei} = 10\,\text{kHz}/ 2\pi\).<br />
+Thus, one Rabi-cycle takes \(200\, \mu \text{s}\). 
+We drive two Rabi-cycles resonantly, and after \(400\, \mu \text{s}\) slowly start to increase the two-photon detuning from \(\delta = 0\)
+by a rate of \(0.1 \,\text{kHz}/\mu\text{s}\).<br />
+The XML-file reads</p>
+<pre><code class="XML">&lt;SIMULATION&gt;
+  &lt;N_THREADS&gt;4&lt;/N_THREADS&gt;
+  &lt;DIM&gt;1&lt;/DIM&gt;
+  &lt;INTERNAL_DIM&gt;3&lt;/INTERNAL_DIM&gt;
+  &lt;FILENAME&gt;0.000_1.bin&lt;/FILENAME&gt;
+  &lt;FILENAME_2&gt;0.000_2.bin&lt;/FILENAME_2&gt;
+  &lt;FILENAME_3&gt;0.000_2.bin&lt;/FILENAME_3&gt;
+  &lt;ALGORITHM&gt;
+    &lt;T_SCALE&gt;1e-6&lt;/T_SCALE&gt;
+    &lt;M&gt;1.44466899e-25&lt;/M&gt;
+  &lt;/ALGORITHM&gt;
+  &lt;CONSTANTS&gt;
+    &lt;f_gi&gt;1e5&lt;/f_gi&gt;
+    &lt;f_ei&gt;1e5&lt;/f_ei&gt;
+    &lt;f_Delta&gt;1e6&lt;/f_Delta&gt;
+    &lt;f_delta&gt;2e3&lt;/f_delta&gt;
+    &lt;t0&gt;400e-6&lt;/t0&gt;
+    &lt;Dt&gt;100e-6&lt;/Dt&gt;
+  &lt;/CONSTANTS&gt;
+  &lt;SEQUENCE&gt;
+    &lt;interact Nk=&quot;1&quot; dt=&quot;2&quot; output_freq=&quot;packed&quot; pn_freq=&quot;each&quot;
+        V_11_real=&quot;0&quot; V_11_imag=&quot;0&quot;  
+        V_12_real=&quot;0&quot; V_12_imag=&quot;0&quot;   
+        V_13_real=&quot;2*pi*f_gi/2&quot; V_13_imag=&quot;0&quot;
+        V_22_real=&quot;2*pi*f_delta*(1/2+1/2*sign(t-t0))*((t-t0)/Dt)&quot; V_22_imag=&quot;0&quot;   
+        V_23_real=&quot;2*pi*f_ei/2&quot; V_23_imag=&quot;0&quot;
+        V_33_real=&quot;2*pi*f_Delta&quot; V_33_imag=&quot;0&quot;
+    &gt;1000&lt;/interact&gt;
+  &lt;/SEQUENCE&gt;
+&lt;/SIMULATION&gt;
+</code></pre></div>
         
         
     </div>
