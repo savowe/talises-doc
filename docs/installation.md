@@ -1,5 +1,10 @@
 # Installing TALISES
 -------------
+TALISES can be downloaded from source on [GitHub](https://github.com/savowe/talises) or by directly cloning it via
+```
+git clone https://github.com/savowe/talises.git
+```
+
 TALISES uses the following libaries:
 
 - [FFTW](http://www.fftw.org/) for Discrete-Fourier-Transforms
