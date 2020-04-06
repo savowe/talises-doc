@@ -268,8 +268,7 @@ tt.plotbin(&quot;0.000_1.bin&quot;)
 
 <p>This will create a .png file which should look like this  </p>
 <p><img alt="1D Gaussian wave-function plot" src="https://raw.githubusercontent.com/savowe/talises-doc/master/figs/1D_gaussian.png" /></p>
-<p>Naturally, TALISES uses SI units for all computations.<br />
-If you want to see this wave-function in action see our example for <a href="/user-guide/examples/rabi_oscillations/">simulating Rabi oscillations</a> which uses this wave-function and transfers it into a second internal state with a oscillatory time-dependent potential.</p>
+<p>Naturally, TALISES uses SI units for all computations.  </p>
 <hr />
 <h3 id="generating-a-2d-wave-function">Generating a 2D wave-function</h3>
 <p>Following the previous example it is very straightfoward to extend the XML file to generate a wave-function in two dimensions.
@@ -298,7 +297,6 @@ and width \(\sigma_x=0.5\mu\text{m}\), \(\sigma_y = 2\mu\text{m}\).  </p>
 
 <p>If you plot the resulting binary file using the plotbin function you will see something like this  </p>
 <p><img alt="1D Gaussian wave-function plot" src="https://raw.githubusercontent.com/savowe/talises-doc/master/figs/2D_gaussian.png" />  </p>
-<p>In our example <a href="/user-guide/examples/rabi_oscillations/">Momentum transfer in 2D</a> you can learn how to use oscillatory time and position dependent potentials (aka light) to move this wave packet into the upper right corner.  </p>
 <p>You can be much more creative with you wave-functions, for example</p>
 <pre><code>1/2*(sign(x--8)+sign(-x+3))*abs(sin(1/8*(x^2+y^2))*sin(2*(x+y)))*exp(-0.25*(y/3)^2)
 </code></pre>
