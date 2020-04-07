@@ -212,7 +212,7 @@
 <li><a href="https://beltoforion.de/article.php?a=muparser">muparser</a> for parsing of mathematical formulas</li>
 </ul>
 <p>You need this three libaries in order to use TALISES. If they are already installed on your machine, you only need the libary paths in your environment variables (e.g LD_LIBRARY_PATH) whilst you compile the program.<br />
-TALISES also comes with an installation script which is written in Common Lisp, that will download the required libaries, compile them and create <a href="https://modules.readthedocs.io/en/latest/">environment-module</a> files. The use of environment-modules is advised. </p>
+TALISES also comes with an installation script which is written in Common Lisp, that will download the required libaries, compile them and create <a href="http://modules.sourceforge.net/">environment-module</a> files. The use of environment-modules is advised. </p>
 <h3 id="prerequisites">Prerequisites</h3>
 <p>Necessities are compilers (gcc, g++), build automation tools (make, cmake) and the <a href="https://www.boost.org/doc/libs/">Boost C++ Libraries</a>.
 You can install these with</p>
@@ -220,10 +220,15 @@ You can install these with</p>
 </code></pre>
 
 <p>If you want to use the install script that comes with TALISES you need a Common Lisp compiler (we will use <a href="http://www.sbcl.org/">SBCL</a>) and environment-modules. They can be installed with</p>
-<pre><code class="text">sudo apt install sbcl curl environment-modules
+<pre><code class="text">sudo apt install sbcl curl
 </code></pre>
 
-<p>After installation of environment-modules you may need to execute <code>add.modules</code> and reboot the system.</p>
+<p>On newer versions of Ubuntu you can install environment-modules via</p>
+<pre><code class="text">sudo apt install tclsh environment-modules
+</code></pre>
+
+<p>After installation of environment-modules you may need to execute <code>add.modules</code> and reboot the system.
+If this does not work we recommend installing <a href="http://modules.sourceforge.net/">it from source.</a></p>
 <h3 id="running-the-installation-script">Running the installation script</h3>
 <p>If you downloaded the git-repository and are within the directory, you can start the installation with</p>
 <pre><code class="text">sbcl --script install.lisp
