@@ -11,7 +11,7 @@ TALISES uses the following libaries:
 - [GSL(CBLAS)](https://www.gnu.org/software/gsl/) for numeric diagonalization and matrix exponentiation
 - [muparser](https://beltoforion.de/article.php?a=muparser) for parsing of mathematical formulas
 
-You need this three libaries in order to use TALISES. If they are already installed on your machine, you only need the libary paths in your environment variables (e.g LD_LIBRARY_PATH) whilst you compile the program.  
+You need this three libaries in order to use TALISES. If they are already installed on your machine, you only need the libary paths in your environment variables (e.g LD_LIBRARY_PATH) whilst you compile the program by running `cmake .`, `make clean` and `make`.  
 TALISES also comes with an installation script which is written in Common Lisp, that will download the required libaries, compile them and create [environment-module](http://modules.sourceforge.net/) files. The use of environment-modules is advised. 
 
 ### Prerequisites
